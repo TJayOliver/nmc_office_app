@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+<head>
+    <%- include("layout/head") %>
+</head>
+<body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+   
+    <%- include("layout/header-smallscreen") %>
+
+    <!--  HEADING -->
+    <div class=" flex flex-wrap justify-center align-middle gap-3 max-w-4xl m-auto mt-10">
+        <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative  p-8 rounded-md h-26 w-[25rem] md:w-[30rem]">
+            <h2 class=" text-2xl text-white text-center fontcolorblack"><%=recordname %></h2>
+            <h5 class=" text-sm text-white text-center fontcolorblack">FROM <%= datefrom%> TO <%= dateto%>
+        </div>
+    </div>
+    
+    <!-- REQUEST TYPE -->
+    <div class=" flex flex-wrap justify-center align-middle gap-3 max-w-4xl m-auto mt-10">
+        <% if(recordname === 'AMENDMENT_OF_RECORDS'){ %>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">CHANGE OF NAME: <%=changeofname %> </h2>
+                </div>
+            </div> 
+            <div class=" flex justify-center align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">CHANGE OF DATE OF BIRTH: <%=changeofdob %> </h2>
+                </div>
+            </div> 
+        <% }else{%><% } %>
+
+        <% if(recordname === 'PIN_AIN_COLLECTION'){ %>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">NEW PIN: <%=newpin %> </h2>
+                </div>
+            </div> 
+            <div class=" flex justify-center align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">NEW AIN: <%=newain %> </h2>
+                </div>
+            </div> 
+            <div class=" flex justify-center align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">RENEWAL: <%=collectrenewal %> </h2>
+                </div>
+            </div> 
+            <div class=" flex justify-center align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">REPLACEMENT: <%=collectreplacement %> </h2>
+                </div>
+            </div> 
+            <div class=" flex justify-center align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">CHANGE OF CARD: <%=collectchangeofcard %> </h2>
+                </div>
+            </div> 
+        <% }else{%><% } %>
+
+        <% if(recordname === 'CERTIFICATE_COLLECTION'){ %>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">PENALTY FOR COLLECTION: <%=certpenalty %> </h2>
+                </div>
+            </div>  
+        <% }else{%><% } %>
+
+        <% if(recordname === 'PIN_AIN_RENEWAL'){ %>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">PIN RENEWAL: <%=pinrenewal %> </h2>
+                </div>
+            </div>  
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">AIN RENEWAL: <%=ainrenewal %> </h2>
+                </div>
+            </div> 
+        <% }else{%><% } %>
+
+        <% if(recordname === 'REGISTRATION'){ %>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">PENALTY FOR REGISTRATION: <%=penaltyforregistration %> </h2>
+                </div>
+            </div>  
+        <% }else{%><% } %>
+
+        <% if(recordname === 'REQUEST_FOR_PIN_AIN'){ %>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">PIN REQUEST: <%= requestforpin %></h2>
+                </div>
+            </div>  
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">AIN REQUEST: <%= requestforain %></h2>
+                </div>
+            </div> 
+        <% }else{%><% } %>
+
+        <% if(recordname === 'REQUEST_FOR_CERTIFICATE'){ %>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-4">CORRECTION OF NAME ON CERTIFICATE: <%= correctname %></h2>
+                </div>
+            </div>  
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-4">CORRECTION OF REGISTRATION NUMBER ON CERTIFICATE: <%= correctregistrationnumber %></h2>
+                </div>
+            </div> 
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">DUPLICATE CERTIFICATE: <%= collectduplicatecertificate %></h2>
+                </div>
+            </div>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-4">CORRECTION OF DATE ON CERTIFICATE: <%= correctdate %></h2>
+                </div>
+            </div>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">REQUEST FROM OTHER REGIONS: <%= collectotherregion %></h2>
+                </div>
+            </div>
+        <% }else{%><% } %>
+
+        <% if(recordname === 'REPLACEMENT_OF_PIN_AIN'){ %>
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">VALID BUT DEFECTIVE PIN/AIN: <%= defective %></h2>
+                </div>
+            </div>  
+            <div class=" flex justify-between align-middle ">
+                <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                    <h2 class=" text-sm text-white text-center fontcolorblack relative -top-2">MISPLACED PIN/AIN: <%= misplaced %></h2>
+                </div>
+            </div> 
+        <% }else{%><% } %>
+
+        <!-- TOTAL -->
+        <div class=" flex justify-center align-middle ">
+            <div class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative p-8 rounded-md h-10 w-[18rem] md:w-[20rem]">
+                <h2 class=" text-xl text-white text-center fontcolorblack relative -top-3">TOTAL: <%= totalnumber%></h2>
+            </div>
+        </div> 
+    </div>
+    
+
+    <!-- PROGRAMS COUNT -->
+    <div class=" flex flex-wrap justify-center align-middle gap-3 max-w-4xl m-auto">
+        <div  class=" grid place-content-center mt-10">
+            <div class=" grid grid-cols-2 gap-6 gap-y-4 md:grid-cols-4 lg:grid-cols-5 xxl:grid xxl:grid-cols-6">
+                <!-- RGN -->
+                <div class=" mainbox h-24 w-32 rounded-lg bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= RGNcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">RGN</p>
+                    </div>
+                </div>
+
+                <!-- RM -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= RMcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">RM</p>
+                    </div>
+                </div>
+                
+                <!-- RMN -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= RMNcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">RMN</p>
+                    </div>
+                </div>
+
+                <!-- RCN -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= RCNcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">RCN</p>
+                    </div>
+                </div>
+
+                <!-- MID -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= MIDcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">MID</p>
+                    </div>
+                </div>
+
+                <!-- PHN -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= PHNcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">PHN</p>
+                    </div>
+                </div>
+
+                <!-- HAC -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= HACcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">HAC</p>
+                    </div>
+                </div>
+
+                <!-- NAC -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= NACcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">NAC</p>
+                    </div>
+                </div>
+
+                <!-- NAP -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= NAPcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">NAP</p>
+                    </div>
+                </div>
+
+                <!-- CHN -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= CHNcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">CHN</p>
+                    </div>
+                </div>
+
+                <!-- SSN -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= SSNcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">SSN</p>
+                    </div>
+                </div>
+
+                <!-- NP -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= NPcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">NP</p>
+                    </div>
+                </div>
+
+                <!-- OPN -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= OPNcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">NAC</p>
+                    </div>
+                </div>
+
+                <!-- PON -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= PONcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">PON</p>
+                    </div>
+                </div>
+
+                <!-- AMEN -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= AMENcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">AMEN</p>
+                    </div>
+                </div>
+
+                <!-- CCN -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= ENTcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">ENT</p>
+                    </div>
+                </div>
+
+                <!-- ENT -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= CCNcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">CCN</p>
+                    </div>
+                </div>
+                
+                <!-- ENUR -->
+                <div class=" mainbox h-24 w-32 rounded-lg  bg-ColorBlack  hover:scale-125 transition duration-150 ease-out hover:bg-HoverColorBlack hover:border-black text-white relative">
+                    <div class=" relative flex justify-center mt-6 text-2xl fontcolorblack">
+                        <div><%= ENURcount%></div>
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">ENUR</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="../scripts/allPages.js"></script>
+</body>
+</html>

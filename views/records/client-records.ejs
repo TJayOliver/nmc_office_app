@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <%- include("../layout/head") %>
+  </head>
+  <body
+    class="min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+    <%- include("../layout/header-smallscreen") %>
+
+    <%- include("../layout/formErrorMsg") %>
+
+    <!-- Table -->
+    <div class="flex flex-col p-6">
+      <div class="-m-1.5">
+        <div class="p-1.5 min-w-full w-[50%] inline-block align-middle">
+          <div class="border rounded-lg divide-y divide-gray-200" >
+
+            <!-- Search Bar, Heading and Export -->
+            <div class="py-3 px-4">
+              <div class=" flex justify-between p-2">
+
+                <!-- Search Bar -->
+                <form action="/records/client-details" method="POST">
+                  <div class="flex justify-center align-middle">
+                    <input 
+                    id="search" 
+                    type="search" 
+                    name="clientDetailsSearch"
+                    placeholder="Search For Client"
+                    class="rounded-lg w-[100%] placeholder:tracking-wide focus-within:bg-white focus-within:text-black placeholder:text-center placeholder:text-sm" />
+                  </div>
+                </form>
+
+                <!-- Heading -->
+                <h1 class="flex justify-center text-center text-white fontcolorblack mt-3">CLIENT DETAILS</h1>
+
+                <!-- Export Data -->
+                <a href="/client-details/export">
+                  <div class="rounded-lg bg-transparent border text-xs text-white fontcolorblack p-3 cursor-pointer hover:bg-white hover:text-black">
+                    <p class="align-middle text-center mt-1">EXPORT TO EXCEL</p>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+
+            <!-- Display Table -->
+            <div class="overflow-x-scroll overflow-y-scroll">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class=" bg-ColorBlack text-white fontcolorblack tableheadcolor">
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium">ACTION</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">REGISTRATION NUMBER</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">FIRST NAME</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">MIDDLE NAME</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">LAST NAME</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">GENDER</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">DATE OF BIRTH</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">PROGRAMME</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">INDEX NUMBER</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">MOBILE NUMBER</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">E-MAIL ADDRESS</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium">CONTACT ADDRESS</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr>
+                    <% if (data.length> 0){ %> <% for(data of data){ %>
+                      <tr class=" text-white fontcolorblack">
+                        <td>
+                          <span class="flex gap-3 p-3">
+                            <a href="/client-details/edit/<%= data.id %>" class="bg-blue-600 hover:bg-blue-700 p-2 rounded-md btns cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg></a>
+                            <% if(req.user.role !== 'ADMIN'){ %>
+                            <% }else{ %>
+                              <a href="/client-details/delete/<%= data.id %>" class="bg-red-600 hover:bg-red-700 p-2 rounded-md btns cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                              </svg></a>
+                            <% } %>
+                          </span>
+                        </td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.registration_number %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.first_name %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.middle_name %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.last_name %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.gender %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.date_of_birth %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.programme %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.index_number %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.phone_number %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.email_address %></td>
+                        <td class="px-6 py-4 text-left text-xs font-medium"><%= data.contact_address %></td>
+                      </tr>
+                      <% } %>
+                        <% } else { %>
+                          <tr>
+                            <td class=" text-white text-center fontcolorblack" colspan="12">NO RECORDS FOUND</td>
+                          </tr>
+                        <% } %>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../scripts/allPages.js"></script>
+  </body>
+</html>

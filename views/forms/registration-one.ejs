@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+
+<head>
+    <%- include("../layout/head") %>
+</head>
+
+<body
+    class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+
+    <%- include("../layout/header-smallscreen") %>
+
+    <%- include("../layout/formErrorMsg") %>
+
+    <!-- Client Details Form-->
+    <div class=" flex justify-center align-middle mt-5">
+        <form action="/first-registration" method="post"
+            class=" mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+            <!-- Heading -->
+            <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                <div class=" flex justify-center align-middle mx-auto space-x-2">
+                    <span><img src="/images/main/registration.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                    <h2 class=" text-2xl  text-white align-middle justify-center">REGISTRATION FORM</h2>
+                </div>
+            </div>
+
+            <!-- First Row -->
+            <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                <!-- First Name -->
+                <div class=" mt-4 mb-5 mx-0">
+                    <label for="fname" class=" text-white text-xl fontcolorblack">FIRST NAME</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Enter First Name"
+                        class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                </div>
+
+                <!-- Middle Name -->
+                <div class=" mt-4 mb-5 mx-0">
+                    <label for="mname" class=" text-white text-xl fontcolorblack">MIDDLE NAME</label>
+                    <input type="text" id="mname" name="middlename" placeholder="Enter Middle Name"
+                        class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5">
+                </div>
+
+                <!-- Last Name -->
+                <div class=" mt-4 mb-5 mx-0">
+                    <label for="lname" class=" text-white text-xl fontcolorblack">LAST NAME</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Enter Last Name"
+                        class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                <!-- Date of Birth -->
+                <div class="  mt-1 mb-5 mx-0 relative">
+                    <label for="dob" class=" text-white text-xl fontcolorblack">DATE OF BIRTH</label>
+                    <input type="date" id="dob" name="dateofbirth"
+                        class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                </div>
+
+                <!-- Gender -->
+                <div class=" mt-1 mb-5 mx-0">
+                    <label for="gender" class=" text-white text-xl fontcolorblack">GENDER</label>
+                    <select id="gender" name="gender"
+                        class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                        <option value="" disabled selected>-- Select --</option>
+                        <option class=" text-black" value="FEMALE">FEMALE</option>
+                        <option class=" text-black" value="MALE">MALE</option>
+                    </select>
+                </div>
+
+                <!-- Phone Number -->
+                <div class=" mt-1 mb-5 mx-0">
+                    <label for="phone" class=" text-white text-xl fontcolorblack">PHONE NUMBER</label>
+                    <input type="tel" id="phone" name="phonenumber" placeholder="Enter Phone Number"
+                        class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5">
+                </div>
+
+            </div>
+
+            <!-- Third Row -->
+            <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                <!-- Contact Address -->
+                <div class=" mt-1 mb-5 mx-0">
+                    <label for="contact" class=" text-white text-xl fontcolorblack">CONTACT ADDRESS</label>
+                    <input type="text" id="contact" name="contactaddress"
+                        placeholder="Enter Contact Address"
+                        class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5">
+                </div>
+
+                <!-- Email Address -->
+                <div class=" mt-1 mb-5 mx-0">
+                    <label for="email" class=" text-white text-xl fontcolorblack">E-MAIL ADDRESS</label>
+                    <input type="email" id="email" name="emailaddress" placeholder="Enter Email Address"
+                        class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                </div>
+            </div>
+
+            <!-- Fourth Row -->
+            <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                <!-- Programme -->
+                <div class=" mt-1 mb-5 mx-0">
+                    <label for="programme" class=" text-white text-xl fontcolorblack">PROGRAMME</label>
+                    <select id="programme" name="programme"
+                        class=" w-full  p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                        <option value="" disabled selected>-- Select --</option>
+                        <option class=" text-black" value="RGN">RGN</option>
+                        <option class=" text-black" value="RM">RM</option>
+                        <option class=" text-black" value="RMN">RMN</option>
+                        <option class=" text-black" value="MID">MID</option>
+                        <option class=" text-black" value="RCN">RCN</option>
+                        <option class=" text-black" value="PHN">PHN</option>
+                        <option class=" text-black" value="NAP">NAP</option>
+                        <option class=" text-black" value="NAC">NAC</option>
+                        <option class=" text-black" value="HAC">HAC</option>
+                        <option class=" text-black" value="CHN">CHN</option>
+                        <option class=" text-black" value="AMEN">AMEN</option>
+                        <option class=" text-black" value="SSN">SSN</option>
+                        <option class=" text-black" value="NP">NP</option>
+                        <option class=" text-black" value="OPN">OPN</option>
+                        <option class=" text-black" value="PON">PON</option>
+                        <option class=" text-black" value="ENT">ENT</option>
+                        <option class=" text-black" value="CCN">CCN</option>
+                    </select>
+                </div>
+
+                <!-- Registration Number -->
+                <div class="  mt-1 mb-5 mx-0 relative">
+                    <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION
+                        NUMBER</label>
+                    <input type="number" id="registration#" name="registrationnumber"
+                        placeholder="Enter Registration Number"
+                        class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                </div>
+
+                <!-- Index Number -->
+                <div class=" mt-1 mb-5 mx-0">
+                    <label for="index" class=" text-white text-xl fontcolorblack">INDEX NUMBER</label>
+                    <input 
+                    type="text" 
+                    id="index" 
+                    name="indexnumber" 
+                    placeholder="Enter Index Number"
+                    class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5">
+                </div>
+            </div>
+
+            <button 
+            type="submit" 
+            id="next"
+            class=" w-full text-white bg-ColorBlack headsubmit hover:bg-HoverColorBlack rounded-lg text-xl cursor-pointer p-3 ">NEXT
+            </button>
+        </form>
+    </div>
+                
+    <script src="../../scripts/allPages.js"></script>
+</body>
+
+</html>

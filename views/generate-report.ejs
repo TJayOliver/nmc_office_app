@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+<head>
+    <%- include("layout/head") %>
+</head>
+<body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+   
+    <%- include("layout/header-smallscreen") %>
+
+    <!-- SELECTIONS -->
+    <div id="container" class=" flex justify-center align-middle mt-2">
+        <div class=" w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+            <div class=" grid grid-cols-1 md:grid-cols-1">
+
+                <!-- DETAILED REPORT -->
+                <div class=" flex justify-center align-middle mt-10">
+                    <div id="detailedreportbox" class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative flex p-8 rounded-md h-26 w-[25rem] md:w-[30rem] cursor-pointer">
+                        <div class=" flex justify-center align-middle mx-auto space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
+                                <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V8Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z"/>
+                              </svg>
+                            <h2 class=" text-2xl text-white align-middle justify-center">DETAILED REPORT</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ALL TRANSACTIONS -->
+                <div class=" flex justify-center align-middle mt-10">
+                    <a href="/records/all-records">
+                        <div class="  mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative flex p-8 rounded-md h-26 w -[25rem] md:w-[30rem] ">
+                            <div class=" flex justify-center align-middle mx-auto space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-ui-checks" viewBox="0 0 16 16">
+                                    <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708l-2 2zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708l-2 2zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                                  </svg>
+                                <h2 class=" text-2xl text-white align-middle justify-center">VIEW ALL TRANSACTIONS</h2>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- SELECT SPECIFIC RECORD -->
+                <div  class=" flex justify-center align-middle mt-12">
+                    <div id="selectrecordbox" class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative flex p-8 rounded-md h-26 w-[25rem] md:w-[30rem] cursor-pointer">
+                        <div class=" flex justify-center align-middle mx-auto space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-calendar-date-fill" viewBox="0 0 16 16">
+                                <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zm5.402 9.746c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.543 1.2 1.144 1.2z"/>
+                                <path d="M16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-6.664-1.21c-1.11 0-1.656-.767-1.703-1.407h.683c.043.37.387.82 1.051.82.844 0 1.301-.848 1.305-2.164h-.027c-.153.414-.637.79-1.383.79-.852 0-1.676-.61-1.676-1.77 0-1.137.871-1.809 1.797-1.809 1.172 0 1.953.734 1.953 2.668 0 1.805-.742 2.871-2 2.871zm-2.89-5.435v5.332H5.77V8.079h-.012c-.29.156-.883.52-1.258.777V8.16a12.6 12.6 0 0 1 1.313-.805h.632z"/>
+                              </svg>
+                            <h2 class=" text-2xl text-white align-middle justify-center">SELECT SPECIFIC RECORDS</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXPORT SPECIFIC RECORD -->
+                <div class=" flex justify-center align-middle mt-12 ">
+                    <div  id="exportrecordbox" class=" mainbox bg-ColorBlack hover:bg-HoverColorBlack headsubmit relative flex p-8 rounded-md h-26 w -[25rem] md:w-[30rem] cursor-pointer">
+                        <div class=" flex justify-center align-middle mx-auto space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="40" fill="white" class="bi bi-cloud-arrow-down-fill -mt-1" viewBox="0 0 16 16">
+                                <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
+                              </svg>
+                            <h2 class=" text-2xl text-white align-middle justify-center">DOWNLOAD RECORDS</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- FORMS -->
+
+    <!-- SELECT DETAILED REPORT FORM -->
+    <div id="detailedbox" class=" hidden bg-[rgb(25,24,24,0.8)] min-h-screen fixed top-0 z-50 w-full transition duration-200 ease-in-out export">
+        <div class="grid place-content-center z-10 drop-shadow-2xl relative ">
+        <div class=" h-[29rem] md:h-[25rem] w-[26rem] bg-white rounded-md mt-28 drop-shadow-lg">
+            <div class="flex justify-evenly align-middle">
+
+                <form class=" grid place-content-center p-4" action="/records/detailed-report" method="post">
+                    <label for="selection" class="text-black text-xl">SELECT DETAILED REPORT</label>
+                    <select id="selectrecord" name="selectrecord"
+                        class="w-full p-3 xl:p-5 rounded-lg border-black text-lg placeholder:tracking-wide text-black" required>
+                        <option value="" disabled selected>-- Select Type --</option>
+                        <option class="text-black" value="amendment_of_records">
+                        AMENDMENT OF RECORDS
+                        </option>
+                        <option class="text-black" value="certificate_collection">
+                            CERTIFICATE COLLECTION
+                        </option>
+                        <option class="text-black" value="duplicate_receipt">
+                            DUPLICATE RECEIPT
+                        </option>
+                        <option class="text-black" value="examiners_pack">
+                            EXAMINERS PACK
+                        </option>
+                        <option class="text-black" value="logbook_submission">
+                            LOGBOOK SUBMISSION
+                        </option>
+                        <option class="text-black" value="pin_ain_collection">
+                            PIN AIN COLLECTION
+                        </option>
+                        <option class="text-black" value="pin_ain_renewal">
+                            PIN AIN RENEWAL
+                        </option>
+                        <option class="text-black" value="re_engagement">
+                            RE-ENGAGEMENT
+                        </option>
+                        <option class="text-black" value="registration">
+                            REGISTRATION
+                        </option>
+                        <option class="text-black" value="replacement_of_pin_ain">
+                            REPLACEMENT
+                        </option>
+                        <option class="text-black" value="request_for_pin_ain">
+                            REQUEST FOR PIN/AIN
+                        </option>
+                        <option class="text-black" value="request_for_certificate">
+                            REQUEST FOR CERTIFICATE
+                        </option>
+                        <option class="text-black" value="request_for_logbook">
+                            REQUEST FOR LOGBOOK
+                        </option>
+                        <option class="text-black" value="request_for_results_slip">
+                            REQUEST FOR RESULTS SLIP
+                        </option>
+                        <option class="text-black" value="verification">
+                            VERIFICATION
+                        </option>
+                    </select>
+
+                    <div class=" flex flex-col md:flex-row gap-x-2">
+                        <!-- DATE FROM  -->
+                        <div class="mt-5 mb-0 mx-0 relative">
+                            <label for="selectdatefrom" class="text-black text-xl">FROM</label>
+                            <input 
+                            type="date" 
+                            id="selectdatefrom" 
+                            name="selectdatefrom" 
+                            class="w-full text-black text-lg rounded-lg border-black placeholder:tracking-wide p-3 xl:p-5"
+                            required />
+                        </div>
+
+                        <!-- DATE TO  -->
+                        <div class="mt-5 mb-0 mx-0 relative">
+                            <label for="selectdateto" class="text-black text-xl">TO</label>
+                            <input 
+                            type="date" 
+                            id="selectdateto" 
+                            name="selectdateto" 
+                            class="w-full text-black text-lg rounded-lg border-black placeholder:tracking-wide p-3 xl:p-5"
+                            required />
+                        </div>
+                    </div>
+
+                    <!-- Submit Button-->
+                    <button 
+                    type="submit" 
+                    id="next"
+                    class="mt-7 h-12 w-full text-white rounded-lg text-xl bg-ColorBlack headsubmit hover:bg-HoverColorBlack cursor-pointer p-3">
+                    DISPLAY
+                    </button>
+
+                    <!-- Cancel Button-->
+                    <div 
+                    role="button" 
+                    id="detailedcancel"
+                    class="mt-4 h-12 w-full text-white rounded-lg text-xl bg-ColorBlack headsubmit hover:bg-HoverColorBlack cursor-pointer p-3 text-center">
+                    CANCEL
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- SELECT SPECIFIC RECORD FORM -->
+    <div id="selectionbox1" class=" hidden bg-[rgb(25,24,24,0.8)] min-h-screen fixed top-0 z-50 w-full transition duration-200 ease-in-out export">
+        <div class="grid place-content-center z-10 drop-shadow-2xl relative ">
+        <div class=" h-[29rem] md:h-[25rem] w-[26rem] bg-white rounded-md mt-28 drop-shadow-lg">
+            <div class="flex justify-evenly align-middle">
+
+                <form class=" grid place-content-center p-4" action="/records/select-record" method="post">
+                    <label for="selection" class="text-black text-xl">SELECT SPECIFIC RECORD</label>
+                    <select id="selectrecord" name="selectrecord"
+                        class="w-full p-3 xl:p-5 rounded-lg border-black text-lg placeholder:tracking-wide text-black" required>
+                        <option value="" disabled selected>-- Select Type --</option>
+                        <option class="text-black" value="amendment_of_records">
+                        AMENDMENT OF RECORDS
+                        </option>
+                        <option class="text-black" value="certificate_collection">
+                            CERTIFICATE COLLECTION
+                        </option>
+                        <option class="text-black" value="duplicate_receipt">
+                            DUPLICATE RECEIPT
+                        </option>
+                        <option class="text-black" value="examiners_pack">
+                            EXAMINERS PACK
+                        </option>
+                        <option class="text-black" value="logbook_submission">
+                            LOGBOOK SUBMISSION
+                        </option>
+                        <option class="text-black" value="pin_ain_collection">
+                            PIN AIN COLLECTION
+                        </option>
+                        <option class="text-black" value="pin_ain_renewal">
+                            PIN AIN RENEWAL
+                        </option>
+                        <option class="text-black" value="re_engagement">
+                            RE-ENGAGEMENT
+                        </option>
+                        <option class="text-black" value="registration">
+                            REGISTRATION
+                        </option>
+                        <option class="text-black" value="replacement_of_pin_ain">
+                            REPLACEMENT
+                        </option>
+                        <option class="text-black" value="request_for_pin_ain">
+                            REQUEST FOR PIN/AIN
+                        </option>
+                        <option class="text-black" value="request_for_certificate">
+                            REQUEST FOR CERTIFICATE
+                        </option>
+                        <option class="text-black" value="request_for_logbook">
+                            REQUEST FOR LOGBOOK
+                        </option>
+                        <option class="text-black" value="request_for_results_slip">
+                            REQUEST FOR RESULTS SLIP
+                        </option>
+                        <option class="text-black" value="verification">
+                            VERIFICATION
+                        </option>
+                    </select>
+
+                    <div class=" flex flex-col md:flex-row gap-x-2">
+                        <!-- DATE FROM  -->
+                        <div class="mt-5 mb-0 mx-0 relative">
+                            <label for="selectdatefrom" class="text-black text-xl">FROM</label>
+                            <input 
+                            type="date" 
+                            id="selectdatefrom" 
+                            name="selectdatefrom" 
+                            class="w-full text-black text-lg rounded-lg border-black placeholder:tracking-wide p-3 xl:p-5"
+                            required />
+                        </div>
+
+                        <!-- DATE TO  -->
+                        <div class="mt-5 mb-0 mx-0 relative">
+                            <label for="selectdateto" class="text-black text-xl">TO</label>
+                            <input 
+                            type="date" 
+                            id="selectdateto" 
+                            name="selectdateto" 
+                            class="w-full text-black text-lg rounded-lg border-black placeholder:tracking-wide p-3 xl:p-5"
+                            required />
+                        </div>
+                    </div>
+
+                    <!-- Submit Button-->
+                    <button 
+                    type="submit" 
+                    id="next"
+                    class="mt-7 h-12 w-full text-white rounded-lg text-xl bg-ColorBlack headsubmit hover:bg-HoverColorBlack cursor-pointer p-3">
+                    VIEW
+                    </button>
+
+                    <!-- Cancel Button-->
+                    <div 
+                    role="button" 
+                    id="box1-cancel"
+                    class="mt-4 h-12 w-full text-white rounded-lg text-xl bg-ColorBlack headsubmit hover:bg-HoverColorBlack cursor-pointer p-3 text-center">
+                    CANCEL
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- DOWNLOAD RECORD FORM -->
+    <div id="selectionbox2" class=" hidden bg-[rgb(25,24,24,0.8)] min-h-screen fixed top-0 z-50 w-full transition duration-200 ease-in-out export">
+        <div class="grid place-content-center z-10 drop-shadow-2xl relative ">
+          <div class=" h-[29rem] md:h-[25rem] w-[26rem] bg-white rounded-md mt-28 drop-shadow-lg">
+            <div class="flex justify-evenly align-middle">
+
+                <form class=" grid place-content-center p-4" action="/records/select-export" method="get">
+                    <label for="selection" class="text-black text-xl">SELECT RECORD TO DOWNLOAD</label>
+                    <select id="selectrecord" name="selectrecord"
+                        class="w-full p-3 xl:p-5 rounded-lg border-black text-lg placeholder:tracking-wide text-black" required>
+                        <option value="" disabled selected>-- Select Type --</option>
+                        <option class="text-black" value="amendment_of_records">
+                        AMENDMENT OF RECORDS
+                        </option>
+                        <option class="text-black" value="certificate_collection">
+                            CERTIFICATE COLLECTION
+                        </option>
+                        <option class="text-black" value="duplicate_receipt">
+                            DUPLICATE RECEIPT
+                        </option>
+                        <option class="text-black" value="examiners_pack">
+                            EXAMINERS PACK
+                        </option>
+                        <option class="text-black" value="logbook_submission">
+                            LOGBOOK SUBMISSION
+                        </option>
+                        <option class="text-black" value="pin_ain_collection">
+                            PIN AIN COLLECTION
+                        </option>
+                        <option class="text-black" value="pin_ain_renewal">
+                            PIN AIN RENEWAL
+                        </option>
+                        <option class="text-black" value="re_engagement">
+                            RE-ENGAGEMENT
+                        </option>
+                        <option class="text-black" value="registration">
+                            REGISTRATION
+                        </option>
+                        <option class="text-black" value="replacement_of_pin_ain">
+                            REPLACEMENT
+                        </option>
+                        <option class="text-black" value="request_for_pin_ain">
+                            REQUEST FOR PIN/AIN
+                        </option>
+                        <option class="text-black" value="request_for_certificate">
+                            REQUEST FOR CERTIFICATE
+                        </option>
+                        <option class="text-black" value="request_for_logbook">
+                            REQUEST FOR LOGBOOK
+                        </option>
+                        <option class="text-black" value="request_for_results_slip">
+                            REQUEST FOR RESULTS SLIP
+                        </option>
+                        <option class="text-black" value="verification">
+                            VERIFICATION
+                        </option>
+                    </select>
+
+                    <div class=" flex flex-col md:flex-row gap-x-2">
+                        <!-- DATE FROM  -->
+                        <div class="mt-5 mb-0 mx-0 relative">
+                            <label for="selectdatefrom" class="text-black text-xl">FROM</label>
+                            <input 
+                            type="date" 
+                            id="selectdatefrom" 
+                            name="selectdatefrom" 
+                            class="w-full text-black text-lg rounded-lg border-black placeholder:tracking-wide p-3 xl:p-5"
+                            required />
+                        </div>
+
+                        <!-- DATE TO  -->
+                        <div class="mt-5 mb-0 mx-0 relative">
+                            <label for="selectdateto" class="text-black text-xl">TO</label>
+                            <input 
+                            type="date" 
+                            id="selectdateto" 
+                            name="selectdateto" 
+                            class="w-full text-black text-lg rounded-lg border-black placeholder:tracking-wide p-3 xl:p-5"
+                            required />
+                        </div>
+                    </div>
+
+                     <!-- Submit Button-->
+                    <button 
+                    type="submit" 
+                    id="next"
+                    class="mt-7 h-12 w-full text-white rounded-lg text-xl bg-ColorBlack headsubmit hover:bg-HoverColorBlack cursor-pointer p-3">
+                    DOWNLOAD
+                    </button>
+
+                    <!-- Cancel Button-->
+                    <div 
+                    role="button" 
+                    id="box2-cancel"
+                    class="mt-4 h-12 w-full text-white rounded-lg text-xl bg-ColorBlack headsubmit hover:bg-HoverColorBlack cursor-pointer p-3 text-center">
+                    CANCEL
+                    </div>
+                </form>
+
+            </div>
+          </div>
+        </div>
+    </div>
+    
+
+    <script src="../scripts/allPages.js"></script>
+    <script src="../scripts/generate-report.js"></script>
+</body>
+</html>

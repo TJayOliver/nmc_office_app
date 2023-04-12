@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --backgroundColorBlack: #121212;
+    --ColorBlack: #1D1D1D;
+    --HoverColorBlack:#333030;
+    --searchInputbgBlack:#ffff;
+    --fontColorBlackWhite: rgb(0, 0, 0);
+    --BoxHoverColor: rgb(25,24,24,0.8); 
+    --fontColorWhiteBlack: #fff;
+
+    --backgroundColorWhite:#ffffff ; 
+    --headerColorWhite: #ffffff;
+    --mainbox: #f8f8ff;
+    
+}
+
+*{font-family: 'Inter', sans-serif;}
+
+#mobile{
+    transform: translateX(980px);
+    transition: all .5s ease;
+}
+
+.slide{display: none;}
+
+.slide.active{display: block;}
+
+/* first */
+.slide.left-to-right{
+    animation-name: left-to-right;
+    animation-duration: .4s;
+    transition: all .4s ease;
+    transform-origin: top;
+}
+@keyframes left-to-right {
+    from{
+        transform: translateX(-480px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.slide.right-to-left{
+    animation-name: right-to-left;
+    animation-duration: .4s;
+    transition: all .4s ease;
+    transform-origin: top;
+}
+@keyframes right-to-left {
+    from{
+        transform: translateX(480px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* light mode colors */
+.whitemode{background-color: var(--backgroundColorWhite);}
+.whitemode .errormessage{
+    background-color: #272826;
+    color: white;
+}
+.whitemode #error-close{color: white;}
+.whitemode .mainbox{background-color: var(--mainbox);}
+.whitemode .mainbox:hover{background-color: #E8F1D4;}
+.whitemode #mobile{
+    background-color: var(--backgroundColorWhite);
+    color: black;
+}
+.whitemode #docscolor:hover{
+    color: white;
+    background-color: black;
+}
+.whitemode #docscolor{
+    color: black;
+    border: solid #CED4DA 1.5px;
+}
+.whitemode form input,
+.whitemode input,
+.whitemode form select{
+    border: solid #CED4DA 1.5px;
+    color: black;
+    border-radius: 8px;
+}
+input,select{
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 12px;
+}
+.whitemode .headercolorwhite{background-color: var(--headerColorWhite);}
+.whitemode .fontcolorblack{color: var(--fontColorBlackWhite);}
+.whitemode .search-logout-color-white{
+    background-color: var(--ColorBlack);
+    color: white;
+}
+.whitemode #search{background-color: var(--mainbox);}
+.whitemode .tablehead{background-color: black;}
+
+.whitemode .btns{color: white; }
+
+.whitemode .tableheadcolor{
+    background-color: rgb(241, 233, 233);
+}
+
+table tbody tr:hover{
+    background-color: var(--HoverColorBlack);
+    transition: all .4s ease;
+}
+
+.whitemode table tbody tr:hover{
+    background-color: rgb(255, 245, 245);
+    transition: all .4s ease;
+}
+.whitemode .headsubmit{
+    background-color: transparent;
+    border: solid #CED4DA 1.5px;
+    color: black;
+}
+.whitemode .headsubmit h2{
+    color: black;
+}
+.whitemode #next:hover{
+    background-color:#343537;
+    color: white;
+}

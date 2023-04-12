@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+<head>
+    <%- include("layout/head") %>
+</head>
+    <body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+    <%- include("layout/header-smallscreen") %>
+
+
+    <div class=" grid place-content-center mt-20">
+        <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
+            <!-- Register New Staff -->
+            <a href="/register-staff">
+                <div class=" mainbox h-48 w-80 rounded-lg bg-transparent border cursor-pointer hover:bg-blue-600 hover:border-black text-white relative hover:translate-y-4 transition duration-150 ease-out">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/admin/add.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/admin/add-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 text-xl fontcolorblack">REGISTER NEW STAFF</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Staff List -->
+            <a href="/view-staff">
+                <div class=" mainbox h-48 w-80 rounded-lg bg-transparent border cursor-pointer hover:bg-blue-600 hover:border-black text-white relative hover:translate-y-4 transition duration-150 ease-out">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/admin/reset.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/admin/reset-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 text-xl fontcolorblack">STAFF LIST</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Forms -->
+            <a href="/clientservice-homepage">
+                <div class=" mainbox h-48 w-80 rounded-lg bg-transparent border cursor-pointer hover:bg-blue-600 hover:border-black text-white relative hover:translate-y-4 transition duration-150 ease-out">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/certificate.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/certificate-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 text-xl fontcolorblack">FORMS</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Generate Reports -->
+            <a href="/generate-report"> 
+                <!-- href="/generate-report" -->
+                <div class=" mainbox h-48 w-80 rounded-lg bg-transparent border cursor-pointer hover:bg-blue-600 hover:border-black text-white relative hover:translate-y-4 transition duration-150 ease-out">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/reports.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/reports-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 text-xl fontcolorblack">GENERATE REPORT</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- View Records -->
+            <a href="/records">
+                <div class=" mainbox h-48 w-80 rounded-lg bg-transparent border cursor-pointer hover:bg-blue-600 hover:border-black text-white relative hover:translate-y-4 transition duration-150 ease-out">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/admin/eye.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/admin/eye-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 text-xl fontcolorblack">VIEW RECORDS</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <script src="/scripts/allPages.js"></script>
+    <script src="/scripts/homepage.js"></script>
+
+    </body>
+</html>
+
+

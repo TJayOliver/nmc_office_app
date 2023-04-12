@@ -1,0 +1,63 @@
+<% if (Success && Success.length > 0) { %>
+    <div id="errorbox" class=" bg-[rgb(25,24,24,0.8)] min-h-screen fixed top-0 z-50 w-full transition duration-200 ease-in-out">
+        <div class="grid place-content-center z-10 drop-shadow-2xl relative top-52">
+          <div class=" h-52 w-96 bg-white rounded-md drop-shadow-lg">
+            <h2 class=" text-3xl text-center tracking-normal mt-4 text-black font-bold p-3"><%= Success %> </h2>
+            <div class="flex justify-evenly align-middle mt-4">
+              <a id="error-close" class="bg-teal-600 hover:bg-teal-700 text-center text-xl text-white h-12 p-2 w-24 rounded-md cursor-pointer">OK</a>
+            </div>
+          </div>
+        </div>
+    </div>
+<% } %>
+
+<% if (Unavailable && Unavailable.length > 0) { %>
+    <div id="errorbox" class=" bg-[rgb(25,24,24,0.8)] min-h-screen fixed top-0 z-50 w-full transition duration-200 ease-in-out">
+        <div class="grid place-content-center z-10 drop-shadow-2xl relative top-52">
+          <div class=" h-52 w-96 bg-white rounded-md drop-shadow-lg">
+            <h2 class=" text-2xl text-center tracking-normal mt-4 text-black font-bold p-3"><%= Unavailable %> </h2>
+            <div class="flex justify-evenly align-middle mt-4">
+              <a id="error-close" class="bg-red-600 hover:bg-red-700 text-center text-xl text-white h-12 p-2 w-56 rounded-md cursor-pointer">ADD CLIENT</a>
+            </div>
+          </div>
+        </div>
+    </div>
+<% } %>
+
+<% if (Updated && Updated.length > 0) { %>
+    <div id="errorbox" class=" bg-[rgb(25,24,24,0.8)] min-h-screen fixed top-0 z-50 w-full transition duration-200 ease-in-out">
+        <div class="grid place-content-center z-10 drop-shadow-2xl relative top-52">
+          <div class=" h-52 w-96 bg-white rounded-md drop-shadow-lg">
+            <h2 class=" text-3xl text-center tracking-normal mt-4 text-black font-bold p-3"><%= Updated %> </h2>
+            <div class="flex justify-evenly align-middle mt-4">
+              <a id="error-close" class="bg-blue-600 hover:bg-blue-700 text-center text-xl text-white h-12 p-2 w-24 rounded-md cursor-pointer">OK</a>
+            </div>
+          </div>
+        </div>
+    </div>
+<% } %>
+
+<% if (Deleted && Deleted.length > 0) { %>
+    <div id="errorbox" class=" bg-[rgb(25,24,24,0.8)] min-h-screen fixed top-0 z-50 w-full transition duration-200 ease-in-out">
+        <div class="grid place-content-center z-10 drop-shadow-2xl relative top-52">
+          <div class=" h-52 w-96 bg-white rounded-md drop-shadow-lg">
+            <h2 class=" text-3xl text-center tracking-normal mt-4 text-black font-bold p-3"><%= Deleted %> </h2>
+            <div class="flex justify-evenly align-middle mt-4">
+              <a id="error-close" class="bg-green-600 hover:bg-green-700 text-center text-xl text-white h-12 p-2 w-24 rounded-md cursor-pointer">OK</a>
+            </div>
+          </div>
+        </div>
+    </div>
+<% } %>
+
+<% if (validationerror && validationerror.length > 0) { %>
+    <% validationerror.forEach(validationerror => { %> 
+    <div id="errorbox" class=" bg-white p-4 rounded-md mt-4 errormessage transition ease-in-out">
+        <%= validationerror %> 
+        <div id="error-close" class=" text-black text-4xl float-right -mt-2 cursor-pointer">&times;</div>
+    </div>
+    <% }) %>
+<% } %>
+
+
+<script src="../../scripts/formerror.js"></script>

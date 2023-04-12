@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en"  class=" scroll-smooth">
+<head>
+    <%- include("layout/head") %>
+</head>
+<body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+    <%- include("layout/header-smallscreen") %>
+
+    <div class=" grid place-content-center mt-14">
+        <div class=" grid grid-cols-1 gap-10 gap-y-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xxl:grid xxl:grid-cols-4 xxl:gap-x-14 xxl:gap-y-24">
+            <!-- Client Records -->
+            <a href="/records/client-details">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-12">
+                        <img src="/images/admin/reset.png" class=" h-[55px] absolute whitemenuicon">
+                        <img src="/images/admin/reset-black.png" class=" h-[55px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">CLIENT DETAILS</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Registration Records -->
+            <a href="/records/registration">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80  bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/registration.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/registration-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REGISTRATION RECORDS</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Pin/Ain Renewal Records -->
+            <a href="/records/pin-ain-renewal">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80  bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/renewal.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/renewal-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">PIN/AIN RENEWAL RECORDS</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Certificate Collection Records -->
+            <a href="/records/certificate-collection">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/certificate.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/certificate-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">CERTIFICATE COLLECTION RECORDS</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Request for Certificate Records -->
+            <a href="/records/request-for-certificate">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/requestforcertificate.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/requestforcertificate.PNG" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REQUEST FOR CERTIFICATE RECORDS</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Pin/Ain Collecion Records -->
+            <a href="/records/pin-ain-collection">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:-translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/pinain.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/pinain-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">PIN/AIN COLLECTION RECORDS</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Request for Pin/Ain Records -->
+            <a href="/records/request-for-pin-ain">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:-translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/requestforpin.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/requestforpin-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REQUEST FOR PIN/AIN RECORDS</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Logbook Submission Records -->
+            <a href="/records/logbook-submission">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/logbook.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/logbook-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">LOGBOOK SUBMISSION RECORDS</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Duplicate Receipt Records -->
+            <a href="/records/duplicate-receipt">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/receipt.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/receipt.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">DUPLICATE RECEIPT RECORDS</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Request for Results Slip Records -->
+            <a href="/records/request-for-results-slip">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/resultsslip.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/resultsslip-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REQUEST FOR RESULTS SLIP RECORDS</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Request for Logbook Records -->
+            <a href="/records/request-for-logbook">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/requestforlogbook.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/requestforlogbook-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REQUEST FOR LOGBOOK RECORDS</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Replacement of Pin/Ain Records -->
+            <a href="/records/replacement-of-pin-ain">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:-translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/replacement.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/replacement-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REPLACEMENT OF PIN/AIN RECORDS</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Amendment of Records -->
+            <a href="/records/amendment-of-records">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:-translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/amendment.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/amendment-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">AMENDMENT OF RECORDS RECORDS</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Examiners Pack Records -->
+            <a href="/records/examiners-pack">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/examiners.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/examiners-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">EXAMINERS PACK RECORDS</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Verification Records -->
+            <a href="/records/verification">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/verification.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/verification-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">VERIFICATION RECORDS</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Reengagement Records -->
+            <a href="/records/re-engagement">
+                <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-green-600 hover:border-black text-white relative cursor-pointer">
+                    <div class=" relative flex justify-center mt-10">
+                        <img src="/images/main/reengagement.png" class=" h-[62px] absolute whitemenuicon">
+                        <img src="/images/blackicons/reengagement.PNG" class=" h-[62px] blackmenuicon opacity-0">
+                    </div>
+                    <div>
+                        <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">RE-ENGAGEMENT RECORDS</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script src="/scripts/allPages.js"></script>
+    <script src="/scripts/homepage.js"></script>
+</body>
+</html>

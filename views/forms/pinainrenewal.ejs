@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+<head>
+    <%- include("../layout/head") %>
+</head>
+<body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+    <%- include("../layout/header-smallscreen") %>
+
+    <% if(action == 'ADD'){ %> 
+
+        <%- include("../layout/formErrorMsg") %>
+
+        <!-- Forms Section -->
+        <div id="container" class=" flex justify-center align-middle mt-5">
+
+            <form action="/pin-ain-renewal" method="post" class=" mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                <!-- Heading -->
+                <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                    <div class=" flex justify-center align-middle mx-auto space-x-2">
+                        <span><img src="/images/main/renewal.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                        <h2 class=" text-2xl text-white align-middle justify-center">PIN/AIN RENEWAL FORM</h2>
+                    </div>
+                </div>
+                
+                <!-- First Row -->
+                <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                    <!-- Registration Number -->
+                    <div class="  mt-4 mb-2 mx-0 relative">
+                        <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                        <input 
+                        type="text" 
+                        id="registration#"
+                        name="registrationNumber" 
+                        placeholder="Enter Registration Number"
+                        class="  w-full  text-white  text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                    </div>
+                        
+                    <!-- Renewal Type -->
+                    <div class=" mt-4 mb-5 mx-0">
+                        <label for="renewal" class=" text-white text-xl fontcolorblack">RENEWAL TYPE</label>
+                            <select id="renewal" name="renewalType" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                            <option value="" disabled selected>-- Select --</option>
+                            <option class=" text-black" value="PIN RENEWAL">PIN RENEWAL</option>
+                            <option class=" text-black" value="AIN RENEWAL">AIN RENEWAL</option>
+                        </select>
+                    </div>
+
+                    <!-- PIN/AIN Number -->
+                    <div class=" mt-4 mb-5 mx-0">
+                        <label for="pinainnumber" class=" text-white text-xl fontcolorblack">PIN/AIN NUMBER</label>
+                        <input type="text" 
+                        id="pinainnumber"
+                        name="pinainnumber" 
+                        placeholder="Enter Pin/Ain Number" 
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                    </div>
+                </div>  
+                
+                <!-- Second Row -->
+                <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                    <!-- AMOUNT PAID  -->
+                    <div class=" mt-2 mb-5 mx-0">
+                        <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT</label>
+                        <input 
+                        type="number" 
+                        id="amount" 
+                        name="amountPaid"
+                        placeholder="Enter Amount Paid"
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                    </div>
+                        
+                    <!-- Date of PIN/AIN Issued  -->
+                    <div class=" mt-2 mb-5 mx-0">
+                        <label for="issued" class=" text-white text-xl fontcolorblack">PIN/AIN ISSUED</label>
+                        <input 
+                        type="date" 
+                        id="issued" 
+                        name="pinainissued"
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                    </div>
+
+                    <!-- Date of PIN/AIN Expiry  -->
+                    <div class=" mt-2 mb-5 mx-0">
+                        <label for="expiry" class=" text-white text-xl fontcolorblack">PIN/AIN EXPIRY</label>
+                        <input 
+                        type="date" 
+                        id="expiry" 
+                        name="pinainexpiry"
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                    </div>
+                </div>
+                
+                <!-- FOR ACCOUNTS OFFICE ONLY -->
+                <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+
+                <div style="display: none;" class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8">
+                    <!-- BANK  -->
+                    <div class=" mt-4 mb-5 mx-0">
+                        <label for="bank" class=" text-white text-xl fontcolorblack">BANK SOURCE</label>
+                        <select id="bank" name="bank" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide">
+                            <option  value="" disabled selected>-- Select Bank -- </option>
+                            <option class=" text-black" value="GCB">GCB</option>
+                            <option class=" text-black" value="ADB">ADB</option>
+                        </select>
+                    </div>
+
+                    <!-- RECEIPT NUMBER  -->
+                    <div class=" mt-4 mb-5 mx-0">
+                        <label for="receipt" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER</label>
+                        <input 
+                        type="number" 
+                        id="receipt" 
+                        name="receiptNumber"
+                        placeholder="Enter Receipt Number"
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide fontcolorblack">
+                    </div>
+
+                    <!-- TRANSACTION REFERENCE NUMBER  -->
+                    <div class=" mt-5 mb-5 mx-0">
+                        <label for="transaction" class=" text-white text-xl fontcolorblack">TRANSACTION NUMBER</label>
+                        <input 
+                        type="text" 
+                        id="transaction" 
+                        name="transactionRef"
+                        placeholder="Enter Transaction Number"
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide fontcolorblack">
+                    </div>
+                </div>
+
+                <% }else{ %>
+
+                    <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8">
+                        <!-- BANK  -->
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="bank" class=" text-white text-xl fontcolorblack">BANK SOURCE</label>
+                            <select id="bank" name="bank" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                                <option  value="" disabled selected>-- Select Bank -- </option>
+                                <option class=" text-black" value="GCB">GCB</option>
+                                <option class=" text-black" value="ADB">ADB</option>
+                            </select>
+                        </div>
+    
+                        <!-- RECEIPT NUMBER  -->
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="receipt" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER</label>
+                            <input 
+                            type="number" 
+                            id="receipt" 
+                            name="receiptNumber"
+                            placeholder="Enter Receipt Number"
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide fontcolorblack" required>
+                        </div>
+    
+                        <!-- TRANSACTION REFERENCE NUMBER  -->
+                        <div class=" mt-5 mb-5 mx-0">
+                            <label for="transaction" class=" text-white text-xl fontcolorblack">TRANSACTION NUMBER</label>
+                            <input 
+                            type="text" 
+                            id="transaction" 
+                            name="transactionRef"
+                            placeholder="Enter Transaction Number"
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide fontcolorblack" required>
+                        </div>
+                    </div>
+
+                <% } %>
+                <button 
+                    type="submit" 
+                    id="next" 
+                    class=" w-full text-white bg-ColorBlack headsubmit hover:bg-HoverColorBlack rounded-lg text-xl cursor-pointer p-3 mt-5">SUBMIT
+                </button>
+            </form>
+
+        </div>
+
+    <% } else if(action == 'EDIT'){ %>
+
+        <%- include("../layout/formErrorMsg") %>
+
+        <!-- Edit Forms Section -->
+        <div id="container" class=" flex justify-center align-middle mt-5">
+
+            <% data.forEach(data =>{ %>
+
+                <form action="/pin-ain-renewal/edit/<%= data.id %>" method="post" class=" mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                    <!-- Heading -->
+                    <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                        <div class=" flex justify-center align-middle mx-auto space-x-2">
+                            <span><img src="/images/main/renewal.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                            <h2 class=" text-2xl  text-white align-middle justify-center">PIN/AIN RENEWAL FORM</h2>
+                        </div>
+                    </div>
+                    
+                    <!-- First Row -->
+                    <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                        <!-- Registration Number -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                        <div class="  mt-4 mb-2 mx-0 relative">
+                            <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                            <input 
+                            type="text" 
+                            id="registration#"
+                            name="registrationNumber" 
+                            value="<%= data.registration_number %>"
+                            placeholder="Enter Registration Number"
+                            class="  w-full  text-white  text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                        </div>
+                        <% }else { %>
+                        <div class="  mt-4 mb-2 mx-0 relative">
+                            <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                            <input readonly
+                            type="text" 
+                            id="registration#"
+                            name="registrationNumber" 
+                            value="<%= data.registration_number %>"
+                            placeholder="Enter Registration Number"
+                            class="  w-full  text-white  text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                        </div>
+                        <% } %>
+
+                        <!-- Renewal Type -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="renewal" class=" text-white text-xl fontcolorblack">RENEWAL TYPE</label>
+                                <select id="renewal" name="renewalType" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                                <option value="" disabled selected>-- Select --</option>
+                                <option class=" text-black" value="PIN RENEWAL">PIN RENEWAL</option>
+                                <option class=" text-black" value="AIN RENEWAL">AIN RENEWAL</option>
+                            </select>
+                        </div>
+                        <% }else{ %>
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="renewal" class=" text-white text-xl fontcolorblack">RENEWAL TYPE</label>
+                                <select style="pointer-events: none;" onclick="return false" id="renewal" name="renewalType" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                                <option value="" disabled selected>-- Select --</option>
+                                <option class=" text-black" value="PIN RENEWAL">PIN RENEWAL</option>
+                                <option class=" text-black" value="AIN RENEWAL">AIN RENEWAL</option>
+                            </select>
+                        </div>
+                        <% } %>
+
+                        <!-- PIN/AIN Number -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="pinainnumber" class=" text-white text-xl fontcolorblack">PIN/AIN NUMBER</label>
+                            <input type="text" 
+                            id="pinainnumber"
+                            name="pinainnumber"
+                            value="<%= data.pin_ain_number %>" 
+                            placeholder="Enter Pin/Ain Number" 
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                        </div>
+                        <% }else{ %>
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="pinainnumber" class=" text-white text-xl fontcolorblack">PIN/AIN NUMBER</label>
+                            <input readonly
+                            type="text" 
+                            id="pinainnumber"
+                            name="pinainnumber"
+                            value="<%= data.pin_ain_number %>" 
+                            placeholder="Enter Pin/Ain Number" 
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                        </div>
+                        <% } %>
+
+                    </div>  
+                    
+                    <!-- Second Row -->
+                    <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                        <!-- AMOUNT PAID  -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div class=" mt-2 mb-5 mx-0">
+                                <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT PAID</label>
+                                <input 
+                                type="number" 
+                                id="amount" 
+                                name="amountPaid"
+                                value="<%= data.amount_paid %>"
+                                placeholder="Enter Amount Paid"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% }else { %>
+                            <div class=" mt-2 mb-5 mx-0">
+                                <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT PAID</label>
+                                <input readonly
+                                type="number" 
+                                id="amount" 
+                                name="amountPaid"
+                                value="<%= data.amount_paid %>"
+                                placeholder="Enter Amount Paid"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div> 
+                        <% } %>
+
+                        <!-- Date of PIN/AIN Issued  -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div class=" mt-2 mb-5 mx-0">
+                                <label for="issued" class=" text-white text-xl fontcolorblack">PIN/AIN ISSUED</label>
+                                <input 
+                                type="date" 
+                                id="issued" 
+                                name="pinainissued"
+                                value="<%= data.date_pin_ain_issued %>"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% }else { %>
+                           <div style="display: none;" class=" mt-2 mb-5 mx-0">
+                            <label for="issued" class=" text-white text-xl fontcolorblack">PIN/AIN ISSUED</label>
+                            <input 
+                            type="date" 
+                            id="issued" 
+                            name="pinainissued"
+                            value="<%= data.date_pin_ain_issued %>"
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% } %>
+
+                        <!-- Date of PIN/AIN Expiry  -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div class=" mt-2 mb-5 mx-0">
+                                <label for="expiry" class=" text-white text-xl fontcolorblack">PIN/AIN EXPIRY</label>
+                                <input 
+                                type="date" 
+                                id="expiry" 
+                                name="pinainexpiry"
+                                value="<%= data.date_pin_ain_expired %>"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% }else { %>
+                            <div style="pointer-events: none;" onclick="return false" class=" mt-2 mb-5 mx-0">
+                                <label for="expiry" class=" text-white text-xl fontcolorblack">PIN/AIN EXPIRY</label>
+                                <input 
+                                type="date" 
+                                id="expiry" 
+                                name="pinainexpiry"
+                                value="<%= data.date_pin_ain_expired %>"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% } %>
+                    </div>
+                    
+                    <!-- FOR ACCOUNTS OFFICE ONLY -->
+                    <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                    <div style="display: none;" class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8">
+                        <!-- BANK  -->
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="bank" class=" text-white text-xl fontcolorblack">BANK SOURCE</label>
+                            <select id="bank" name="bank" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide">
+                                <option  value="" disabled selected>-- Select Bank -- </option>
+                                <option class=" text-black" value="GCB">GCB</option>
+                                <option class=" text-black" value="ADB">ADB</option>
+                            </select>
+                        </div>
+
+                        <!-- RECEIPT NUMBER  -->
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="receipt" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER</label>
+                            <input 
+                            type="number" 
+                            id="receipt" 
+                            name="receiptNumber"
+                            value="<%= data.receipt_number %>"
+                            placeholder="Enter Receipt Number"
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide fontcolorblack">
+                        </div>
+
+                        <!-- TRANSACTION REFERENCE NUMBER  -->
+                        <div class=" mt-5 mb-5 mx-0">
+                            <label for="transaction" class=" text-white text-xl fontcolorblack">TRANSACTION NUMBER</label>
+                            <input 
+                            type="text" 
+                            id="transaction" 
+                            name="transactionRef"
+                            value="<%= data.transaction_reference_number %>"
+                            placeholder="Enter Transaction Number"
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide fontcolorblack">
+                        </div>
+                    </div>
+                    <% }else { %>
+                    <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8">
+                        <!-- BANK  -->
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="bank" class=" text-white text-xl fontcolorblack">BANK SOURCE</label>
+                            <select id="bank" name="bank" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                                <option  value="" disabled selected>-- Select Bank -- </option>
+                                <option class=" text-black" value="GCB">GCB</option>
+                                <option class=" text-black" value="ADB">ADB</option>
+                            </select>
+                        </div>
+
+                        <!-- RECEIPT NUMBER  -->
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="receipt" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER</label>
+                            <input 
+                            type="number" 
+                            id="receipt" 
+                            name="receiptNumber"
+                            value="<%= data.receipt_number %>"
+                            placeholder="Enter Receipt Number"
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide fontcolorblack" required>
+                        </div>
+
+                        <!-- TRANSACTION REFERENCE NUMBER  -->
+                        <div class=" mt-5 mb-5 mx-0">
+                            <label for="transaction" class=" text-white text-xl fontcolorblack">TRANSACTION NUMBER</label>
+                            <input 
+                            type="text" 
+                            id="transaction" 
+                            name="transactionRef"
+                            value="<%= data.transaction_reference_number %>"
+                            placeholder="Enter Transaction Number"
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide fontcolorblack" required>
+                        </div>
+                    </div>   
+                    <% } %>
+
+                    <button 
+                        type="submit" 
+                        id="next" 
+                        class=" w-full text-white bg-ColorBlack headsubmit hover:bg-HoverColorBlack  rounded-lg text-xl cursor-pointer p-3 mt-5">SUBMIT
+                    </button>
+
+                    <script>
+                        document.getElementById('bank').value = '<%= data.bank %>';
+                        document.getElementById('renewal').value = '<%= data.renewal_type %>';
+                    </script>
+                </form>
+
+            <% }) %>
+            
+        </div>
+
+    <% } %>
+
+    <script src="../../scripts/allPages.js"></script>
+</body>
+</html>

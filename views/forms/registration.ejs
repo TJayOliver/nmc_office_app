@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+<head>
+    <%- include("../layout/head") %>
+</head>
+<body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+    <%- include("../layout/header-smallscreen") %>
+
+    <% if(action == 'ADD'){ %> 
+
+        <%- include("../layout/formErrorMsg") %>
+
+        <!-- Registration Details Form -->
+        <div class=" flex justify-center align-middle mt-1">
+
+            <form action="/registration" method="post" class=" mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                <!-- Heading -->
+                <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                    <div class=" flex justify-center align-middle mx-auto space-x-2">
+                        <span><img src="/images/main/registration.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                        <h2 class=" text-2xl  text-white align-middle justify-center">REGISTRATION FORM</h2>
+                    </div>
+                </div>
+
+                <!-- First Row -->
+                <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8">
+                    <!-- Registration Number -->
+                    <div class="  mt-3 mb-5 mx-0 relative">
+                        <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                        <input 
+                        type="text" 
+                        id="registration#"
+                        name="registrationNumber" 
+                        placeholder="e.g RGN8080"
+                        class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                    </div>
+
+                    <!-- Name of Instituition -->
+                    <div class=" mt-3 mb-5 mx-0">
+                        <label for="school" class=" text-white text-xl fontcolorblack">NAME OF INSTITUITION</label>
+                        <input type="text" 
+                        id="school"
+                        name="nameofinstitution" 
+                        placeholder="Enter Name of Insituition" 
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                    </div>
+                </div>  
+                
+                <!-- Second Row -->
+                <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                    <!-- Code of Conduct -->
+                    <div class=" mt-1 mb-5 mx-0">
+                        <label for="codeofconduct" class=" text-white text-xl fontcolorblack">CODE OF CONDUCT</label>
+                        <select id="codeofconduct" name="codeofconduct" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            <option value="" disabled selected>-- Select YES/NO --</option>
+                            <option class=" text-black" value="YES">YES</option>
+                            <option class=" text-black" value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <!-- Logbook Issued -->
+                    <div class=" mt-1 mb-5 mx-0">
+                        <label for="logbook" class=" text-white text-xl fontcolorblack">LOGBOOK ISSUED</label>
+                        <select id="logbook" name="logbookissued" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            <option value="" disabled selected>-- Select YES/NO--</option>
+                            <option class=" text-black" value="YES">YES</option>
+                            <option class=" text-black" value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <!-- Amount Paid  -->
+                    <div class=" mt-1 mb-5 mx-0">
+                        <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT</label>
+                        <input 
+                        type="number" 
+                        id="amount"
+                        name="amountPaid" 
+                        placeholder="Enter Amount"
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                    </div>
+                </div>
+
+                <!-- Third Row -->
+                <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                    <!-- Late Registration -->
+                    <div class=" mt-1 mb-5 mx-0">
+                        <label for="latereg" class=" text-white text-xl fontcolorblack">LATE REGISTRATION</label>
+                        <select id="lateRegistrationSelection" name="lateRegistration" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            <option value="" disabled selected>-- Select YES/NO --</option>
+                            <option class=" text-black" value="PENALTY FOR REGISTRATION">YES</option>
+                            <option class=" text-black" value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <!-- Late Registration Amount -->
+                    <div id="late-amount-box" class=" hidden mt-1 mb-5 mx-0">
+                        <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT(PENALTY)</label>
+                        <input 
+                        type="number" 
+                        id="amount-late"
+                        name="lateregistrationamount" 
+                        placeholder="Enter Amount"
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                    </div>
+
+                </div>
+
+                <!-- Submit Buttons -->
+                <button 
+                    type="submit" 
+                    id="SUBMIT"  
+                    class=" mt-4 w-full text-white bg-ColorBlack headsubmit hover:bg-HoverColorBlack  rounded-lg text-xl cursor-pointer p-3 ">SUBMIT
+                </button>
+
+            </form>
+
+        </div>
+
+        <script src="../../scripts/registration-add.js"></script>
+
+    <% } else if(action == 'EDIT'){ %>
+
+        <%- include("../layout/formErrorMsg") %>
+
+        <!-- Registration Details Form -->
+        <div class=" flex justify-center align-middle mt-1">
+
+            <% data.forEach(data =>{ %>
+
+                <form action="/registration/edit/<%= data.id %>" method="post" class=" mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                    <!-- Heading -->
+                    <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                        <div class=" flex justify-center align-middle mx-auto space-x-2">
+                            <span><img src="/images/main/registration.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                            <h2 class=" text-2xl  text-white align-middle justify-center">EDIT REGISTRATION FORM</h2>
+                        </div>
+                    </div>
+
+                    <!-- First Row -->
+                    <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8">
+                        <!-- Registration Number -->
+                        <div class="  mt-3 mb-5 mx-0 relative">
+                            <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                            <% if (req.user.role !== 'ACCOUNTS' && 'ADMIN') { %>
+                              <input 
+                                type="text" 
+                                id="registration#"
+                                name="registrationNumber" 
+                                value="<%= data.registration_number %>"
+                                placeholder="e.g RGN8080"
+                                class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                            <% } else { %>
+                              <input readonly
+                                type="text" 
+                                id="registration#"
+                                name="registrationNumber" 
+                                value="<%= data.registration_number %>"
+                                placeholder="Enter Registration Number"
+                                class="  w-full text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" 
+                                readonly>
+                            <% } %>
+                        </div>
+
+                        <!-- Name of Institution -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div class=" mt-3 mb-5 mx-0">
+                                <label for="school" class=" text-white text-xl fontcolorblack">NAME OF INSTITUTION</label>
+                                <input type="text" 
+                                id="school"
+                                name="nameofinstitution"
+                                value="<%= data.name_of_institution %>" 
+                                placeholder="Enter Name of Insituition" 
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% }else{ %>
+                            <div style="display: none;" class=" mt-3 mb-5 mx-0">
+                                <label for="school" class=" text-white text-xl fontcolorblack">NAME OF INSTITUTION</label>
+                                <input type="text" 
+                                id="school"
+                                name="nameofinstitution"
+                                value="<%= data.name_of_institution %>" 
+                                placeholder="Enter Name of Insituition" 
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div> 
+                        <% } %>
+                        
+                        <!-- Amount Paid  -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div style="display: none;" class=" mt-1 mb-5 mx-0">
+                                <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT</label>
+                                <input 
+                                type="number" 
+                                id="amount"
+                                name="amountPaid" 
+                                value="<%= data.amount_paid %>"
+                                placeholder="Enter Amount Paid"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% }else{ %> 
+                            <div class=" mt-1 mb-5 mx-0">
+                                <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT</label>
+                                <input 
+                                type="number" 
+                                id="amount"
+                                name="amountPaid" 
+                                value="<%= data.amount_paid %>"
+                                placeholder="Enter Amount Paid"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required readonly>
+                            </div>
+                        <% } %>
+                    </div>  
+                    
+                    <!-- Second Row -->
+                    <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                        <!-- Code of Conduct -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div class=" mt-1 mb-5 mx-0">
+                                <label for="codeofconduct" class=" text-white text-xl fontcolorblack">CODE OF CONDUCT</label>
+                                <select id="codeofconduct" name="codeofconduct" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                                    <option value="" disabled selected>-- Select YES/NO --</option>
+                                    <option class=" text-black" value="YES">YES</option>
+                                    <option class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>
+                        <% }else{ %>
+                            <div style="display: none;" class=" mt-1 mb-5 mx-0">
+                                <label for="codeofconduct" class=" text-white text-xl fontcolorblack">CODE OF CONDUCT</label>
+                                <select id="codeofconduct" name="codeofconduct" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                                    <option value="" disabled selected>-- Select YES/NO --</option>
+                                    <option class=" text-black" value="YES">YES</option>
+                                    <option class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>  
+                        <% } %>
+
+                        <!-- Logbook Issued -->
+                        <% if(req.user.role !=='ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div class=" mt-1 mb-5 mx-0">
+                                <label for="logbook" class=" text-white text-xl fontcolorblack">LOGBOOK ISSUED</label>
+                                <select id="logbook" name="logbookissued" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" >
+                                    <option value="" disabled selected>-- Select YES/NO--</option>
+                                    <option class=" text-black" value="YES">YES</option>
+                                    <option class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>
+                        <% }else{ %>
+                            <div style="display: none;" class=" mt-1 mb-5 mx-0">
+                                <label for="logbook" class=" text-white text-xl fontcolorblack">LOGBOOK ISSUED</label>
+                                <select id="logbook" name="logbookissued" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" >
+                                    <option value="" disabled selected>-- Select YES/NO--</option>
+                                    <option class=" text-black" value="YES">YES</option>
+                                    <option class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>
+                        <% } %>
+
+                        <!-- Amount   -->
+                        <div class=" mt-1 mb-5 mx-0">
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT</label>
+                            <input 
+                            type="number" 
+                            id="amount"
+                            name="amountPaid" 
+                            value="<%= data.amount_paid %>"
+                            placeholder="Enter Amount"
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                        <% }else{ %> 
+                        <% } %>
+                        </div>
+                    </div>
+
+                    <!-- Third Row -->
+                    <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                        <!-- Late Registration -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div class=" mt-1 mb-5 mx-0">
+                                <label for="latereg" class=" text-white text-xl fontcolorblack">LATE REGISTRATION</label>
+                                <select id="lateRegistrationSelection" name="lateRegistration" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                                    <option value="" disabled selected>-- Select YES/NO --</option>
+                                    <option class=" text-black" value="PENALTY FOR REGISTRATION">YES</option>
+                                    <option class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>
+                        <% }else{ %>
+                            <div class=" mt-1 mb-5 mx-0">
+                                <label for="latereg" class=" text-white text-xl fontcolorblack">LATE REGISTRATION</label>
+                                <select style="pointer-events:none ;" onclick="return false" id="lateRegistrationSelection" name="lateRegistration" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                                    <option value="" disabled selected>-- Select YES/NO --</option>
+                                    <option  class=" text-black" value="PENALTY FOR REGISTRATION">YES</option>
+                                    <option  class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>
+                        <% } %>
+
+                        <!-- Late Registration Amount   -->
+                        <% if (req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>  
+                            <div id="late-amount-box" class=" mt-1 mb-5 mx-0">  
+                                <label for="amount-late" class=" text-white text-xl fontcolorblack">AMOUNT(PENALTY)</label>
+                                <input 
+                                type="number" 
+                                id="amount-late"
+                                name="lateregistrationamount"
+                                value="<%= data.late_registration_amount %>" 
+                                placeholder="Enter Amount"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% }else{ %>
+                            <div id="late-amount-box" class=" mt-1 mb-5 mx-0">
+                                <label for="amount-late" class=" text-white text-xl fontcolorblack">AMOUNT PAID(PENALTY)</label>
+                                <input
+                                type="number" 
+                                id="amount-late"
+                                name="lateregistrationamount"
+                                value="<%= data.late_registration_amount %>" 
+                                placeholder="Enter Amount"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required readonly>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <!-- FOR ACCOUNTS OFFICE ONLY -->
+
+                    <!-- Fourth Row -->
+                    <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                        <!-- Bank Penalty  -->
+                        <% if(req.user.role !=='ACCOUNTS'){ %>
+                            <div style="display: none;" class=" mt-1 mb-5 mx-0">
+                                <label for="bank-penalty" class=" text-white text-xl fontcolorblack">BANK SOURCE(PENALTY)</label>
+                                <select id="bank-penalty" name="penaltybank" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide">
+                                    <option value="" disabled selected>-- Select--</option>
+                                    <option class=" text-black" value="GCB">GCB</option>
+                                    <option class=" text-black" value="ADB">ADB</option>
+                                </select>                      
+                            </div>
+                        <% }else{ %>
+                            <div id="bank-box" class=" mt-1 mb-5 mx-0">
+                                <label for="bank-penalty" class=" text-white text-xl fontcolorblack">BANK SOURCE(PENALTY)</label>
+                                <select id="bank-penalty" name="penaltybank" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide ">
+                                    <option value="" disabled selected>-- Select--</option>
+                                    <option class=" text-black" value="GCB">GCB</option>
+                                    <option class=" text-black" value="ADB">ADB</option>
+                                </select>                      
+                            </div>
+                        <% } %>
+
+                        <!-- Late Registration Receipt  -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div style="display: none;"  class=" mt-1 mb-5 mx-0">
+                                <label for="late-receipt" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER(PENALTY)</label>
+                                <input 
+                                type="number" 
+                                id="late-receipt"
+                                name="penaltyreceipt" 
+                                value="<%= data.late_registration_receipt_number %>"
+                                placeholder="Enter Receipt Number (Penalty)"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide">
+                            </div>
+                        <% }else{ %>
+                            <div id="late-receipt-box" class=" mt-1 mb-5 mx-0">
+                                <label for="late-receipt" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER(PENALTY)</label>
+                                <input 
+                                type="number" 
+                                id="late-receipt"
+                                name="penaltyreceipt" 
+                                value="<%= data.late_registration_receipt_number %>"
+                                placeholder="Enter Receipt Number (Penalty)"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide">
+                            </div>
+                        <% } %>
+
+                        <!-- Late Registration Transaction Reference Number  -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div style="display: none;" class=" -mt-1 mb-5 mx-0">
+                                <label for="late-transaction-number" class=" text-white text-xl fontcolorblack">TRANSACTION NUMBER(PENALTY)</label>
+                                <input 
+                                type="text" 
+                                id="late-transaction-number"
+                                name="penaltytransactionRef"
+                                value="<%= data.late_registration_transaction_reference_number %>" 
+                                placeholder="Enter Reference Number(Penalty)"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide">
+                            </div>
+                        <% }else{ %>
+                            <div id="transaction-box" class=" mt-1 mb-5 mx-0">
+                                <label for="late-transaction-number" class=" text-white text-xl fontcolorblack">TRANSACTION NUMBER(PENALTY)</label>
+                                <input 
+                                type="text" 
+                                id="late-transaction-number"
+                                name="penaltytransactionRef"
+                                value="<%= data.late_registration_transaction_reference_number %>" 
+                                placeholder="Enter Reference Number(Penalty)"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide">
+                            </div>
+                        <% } %>
+                        
+                    </div>
+
+                    <!-- Fifth Row -->
+                    <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10">
+                        <!-- BANK  -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div style="display: none;" class=" mt-5 mb-5 mx-0">
+                                <label for="bank" class=" text-white text-xl fontcolorblack">BANK SOURCE</label>
+                                <select id="bank" name="bank" class=" w-full p-3 xl:p-5  rounded-md text-lg placeholder:tracking-wide">
+                                    <option value="" disabled selected>-- Select--</option>
+                                    <option class=" text-black" value="GCB">GCB</option>
+                                    <option class=" text-black" value="ADB">ADB</option>
+                                </select>
+                            </div>
+                        <% }else{ %>
+                            <div class=" mt-5 mb-5 mx-0">
+                                <label for="bank" class=" text-white text-xl fontcolorblack">BANK SOURCE</label>
+                                <select id="bank" name="bank" class=" w-full p-3 xl:p-5  rounded-md text-lg placeholder:tracking-wide">
+                                    <option value="" disabled selected>-- Select--</option>
+                                    <option class=" text-black" value="GCB">GCB</option>
+                                    <option class=" text-black" value="ADB">ADB</option>
+                                </select>
+                            </div>
+                        <% } %>
+                        
+                        <!-- RECEIPT NUMBER  -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div style="display: none;" class=" mt-5 mb-5 mx-0">
+                                <label for="receipt" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER</label>
+                                <input 
+                                type="number" 
+                                id="receipt"
+                                name="receiptNumber" 
+                                value="<%= data.receipt_number %>"
+                                placeholder="Enter Receipt Number"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide">
+                            </div>
+                        <% }else{ %>
+                            <div class=" mt-5 mb-5 mx-0">
+                                <label for="receipt" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER</label>
+                                <input 
+                                type="number" 
+                                id="receipt"
+                                name="receiptNumber" 
+                                value="<%= data.receipt_number %>"
+                                placeholder="Enter Receipt Number"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% } %>
+
+                        <!-- TRANSACTION REFERENCE NUMBER  -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                            <div style="display: none;" class=" mt-5 mb-5 mx-0">
+                                <label for="transaction" class=" text-white text-xl">TRANSACTION NUMBER</label>
+                                <input 
+                                type="text" 
+                                id="transaction"
+                                name="transactionRef" 
+                                value="<%= data.transaction_reference_number %>"
+                                placeholder="Enter Transaction Number"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide">
+                            </div>
+                        <% }else{ %>
+                            <div class=" mt-5 mb-5 mx-0">
+                                <label for="transaction" class=" text-white text-xl">TRANSACTION NUMBER</label>
+                                <input 
+                                type="text" 
+                                id="transaction"
+                                name="transactionRef" 
+                                value="<%= data.transaction_reference_number %>"
+                                placeholder="Enter Transaction Number"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <!-- Submit Buttons -->
+                    <button 
+                        type="submit" 
+                        id="SUBMIT"  
+                        class=" -mt-18 w-full text-white bg-ColorBlack headsubmit hover:bg-HoverColorBlack  rounded-lg text-xl cursor-pointer p-3 ">SUBMIT
+                    </button>
+
+                    <script>
+                        document.getElementById('bank').value = "<%= data.bank %>"
+                        document.getElementById('bank-penalty').value = "<%= data.late_registration_bank %>"
+                        document.getElementById('lateRegistrationSelection').value = "<%= data.late_registration %>"
+                        document.getElementById('codeofconduct').value = "<%= data.code_of_conduct %>"
+                        document.getElementById('logbook').value = "<%= data.logbook_issued %>"
+
+                        
+                    </script>
+
+                </form>
+
+            <% }) %>
+
+        </div>
+
+        
+
+        <script src="../../scripts/registration-edit.js"></script>
+    
+    <% } %>
+
+    <script src="../../scripts/allPages.js"></script>
+</body>
+</html>

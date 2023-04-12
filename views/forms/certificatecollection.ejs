@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+<head>
+    <%- include("../layout/head") %>
+</head>
+<body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+    <%- include("../layout/header-smallscreen") %>
+
+    <% if(action == 'ADD'){ %>
+
+        <%- include("../layout/formErrorMsg") %>
+
+        <!-- Forms Section -->
+        <div id="container" class=" flex justify-center align-middle mt-5">
+
+            <form action="/certificate-collection" method="post" class=" mt-1 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                <!-- Heading -->
+                <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                    <div class=" flex justify-center align-middle mx-auto space-x-2">
+                        <span><img src="/images/main/certificate.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                        <h2 class=" text-2xl  text-white align-middle justify-center">CERTIFICATE COLLECTION FORM</h2>
+                    </div>
+                </div>
+
+                <!-- First Row -->
+                <div class=" flex flex-col lg:flex ">
+                    <!-- Registration Number -->
+                    <div class="  mt-5 mb-0 mx-0 relative">
+                        <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                        <input 
+                        type="text" 
+                        id="registration#" 
+                        name="registrationNumber"
+                        placeholder="Enter Registration Number"
+                        class="  w-full text-white border-white text-lg rounded-lg  placeholder:tracking-wide p-3 xl:p-5" required>
+                    </div>
+                </div> 
+                
+                <!-- Second Row -->
+                <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                    <!-- Working Institution -->
+                    <div class=" mt-4 mb-0 mx-0">
+                        <label for="workingInstitution" class=" text-white text-xl fontcolorblack">WORKING INSTITUTION</label>
+                        <select name="workingInstitution" id="workingInstitution" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide " required>
+                            <option value="" disabled selected>-- Select --</option>
+                            <option class=" text-black" value="CHAG">CHAG</option>
+                            <option class=" text-black" value="QUASI">QUASI</option>
+                            <option class=" text-black" value="PRIVATE">PRIVATE</option>
+                            <option class=" text-black" value="GOVERNMENT">GOVERNMENT</option>
+                        </select>
+                    </div>
+                        
+                    <!-- Date on Certificate -->
+                    <div class=" mt-5 mb- mx-0">
+                        <label for="date-on-cert" class=" text-white text-xl fontcolorblack">DATE ON CERTIFICATE</label>
+                        <input 
+                        type="date" 
+                        id="date-on-cert" 
+                        name="dateoncertificate"
+                        class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                    </div>
+                </div>
+
+                <!-- Third Row -->
+                <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                    <!-- Badge Issued -->
+                    <div class=" mt-4 mb-0 mx-0">
+                        <label for="badge" class=" text-white text-xl fontcolorblack">BADGE ISSUED</label>
+                        <select name="badgeissued" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide " required>
+                            <option value="" disabled selected>-- Select YES/NO --</option>
+                            <option class=" text-black" value="YES">YES</option>
+                            <option class=" text-black" value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <!-- Induction Items Issued -->
+                    <div  class=" mt-4 mb-0 mx-0">
+                        <label for="induction" class=" text-white text-xl fontcolorblack">INDUCTION ITEMS</label>
+                        <select name="inductionitems" class=" w-full p-3 xxl:p-5 rounded-lg text-lg placeholder:tracking-wide " required >
+                            <option value="" disabled selected>-- Select YES/NO --</option>
+                            <option class=" text-black" value="YES">YES</option>
+                            <option class=" text-black" value="NO">NO</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Fourth Row -->
+                <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                    <!-- Penalty for Collection -->
+                    <div class=" mt-4 mb-5 mx-0">
+                        <label for="latereg" class=" text-white text-xl fontcolorblack">PENALTY FOR COLLECTION</label>
+                        <select name="penaltyforcollection" id="lateCertificateSelection"class=" w-full p-3 xxl:p-5 rounded-lg text-lg placeholder:tracking-wide " required>
+                            <option value="" disabled selected>-- Select YES/NO --</option>
+                            <option class=" text-black" value="PENALTY FOR CERTIFICATE">YES</option>
+                            <option class=" text-black" value="NO">NO</option>
+                        </select>
+                    </div>
+
+                    <!-- Amount Paid  -->
+                    <div id="late-amount-box" class=" hidden mt-4 mb-5 mx-0">
+                        <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT(PENALTY)</label>
+                        <input 
+                        type="number" 
+                        id="amount-late"
+                        name="amountPaid" 
+                        placeholder="Enter Amount"
+                        class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                    </div>
+                </div>
+
+                <!-- Submit Button-->
+                <button 
+                    type="submit" 
+                    id="next" 
+                    class=" w-full text-white bg-ColorBlack headsubmit hover:bg-HoverColorBlack rounded-lg text-xl cursor-pointer p-3">SUBMIT
+                </button>
+                
+            </form>
+
+        </div>
+
+        <script src="../../scripts/certificate-add.js"></script>
+
+    <% } else if(action == 'EDIT'){ %>
+
+        <%- include("../layout/formErrorMsg") %>
+
+        <!-- Edit Forms Section -->
+        <div id="container" class=" flex justify-center align-middle mt-5">
+
+            <% data.forEach(data =>{ %>
+
+                <form action="/certificate-collection/edit/<%= data.id %>" method="post" class=" mt-1 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                    <!-- Heading -->
+                    <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                        <div class=" flex justify-center align-middle mx-auto space-x-2">
+                            <span><img src="/images/main/certificate.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                            <h2 class=" text-2xl  text-white align-middle justify-center">EDIT CERTIFICATE COLLECTION FORM</h2>
+                        </div>
+                    </div>
+
+                    <!-- First Row -->
+                    <div class=" flex flex-col lg:flex ">
+                        <!-- Registration Number -->
+                        <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN') { %>
+                        <div class="  mt-5 mb-0 mx-0 relative">
+                            <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                            <input
+                            type="text" 
+                            id="registration#" 
+                            name="registrationNumber"
+                            value="<%=data.registration_number %>"
+                            placeholder="Enter Registration Number"
+                            class="  w-full text-white border-white text-lg rounded-lg  placeholder:tracking-wide p-3 xl:p-5" required>
+                        </div>
+                        <% } else { %>
+                        <div class="  mt-5 mb-0 mx-0 relative">
+                            <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                            <input readonly
+                            type="text" 
+                            id="registration#" 
+                            name="registrationNumber"
+                            value="<%=data.registration_number %>"
+                            placeholder="Enter Registration Number"
+                            class="  w-full text-white border-white text-lg rounded-lg  placeholder:tracking-wide p-3 xl:p-5" required>
+                        </div>
+                        <%  } %>
+                    </div>  
+
+                    <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN') { %>
+                        <!-- Second Row -->
+                        <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                            <!-- Working Institution -->
+                            <div class=" mt-4 mb-0 mx-0">
+                                <label for="workingInstitution" class=" text-white text-xl fontcolorblack">WORKING INSTITUTION</label>
+                                <select name="workingInstitution" id="workingInstitution" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide " required>
+                                    <option value="" disabled selected>-- Select --</option>
+                                    <option class=" text-black" value="CHAG">CHAG</option>
+                                    <option class=" text-black" value="QUASI">QUASI</option>
+                                    <option class=" text-black" value="PRIVATE">PRIVATE</option>
+                                    <option class=" text-black" value="GOVERNMENT">GOVERNMENT</option>
+                                </select>
+                            </div>
+                                
+                            <!-- Date on Certificate -->
+                            <div class=" mt-5 mb- mx-0">
+                                <label for="date-on-cert" class=" text-white text-xl fontcolorblack">DATE ON CERTIFICATE</label>
+                                <input 
+                                type="date" 
+                                id="date-on-cert" 
+                                name="dateoncertificate"
+                                value="<%= data.date_on_certificate %>"
+                                class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Third Row -->
+                        <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                            <!-- Badge Issued -->
+                            <div class=" mt-4 mb-0 mx-0">
+                                <label for="badge" class=" text-white text-xl fontcolorblack">BADGE ISSUED</label>
+                                <select name="badgeissued" id="badgeissued" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide " required>
+                                    <option value="" disabled selected>-- Select YES/NO --</option>
+                                    <option class=" text-black" value="YES">YES</option>
+                                    <option class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>
+
+                            <!-- Induction Items Issued -->
+                            <div class=" mt-4 mb-0 mx-0">
+                                <label for="induction" class=" text-white text-xl fontcolorblack">INDUCTION ITEMS</label>
+                                <select name="inductionitems" id="inductionitems" class=" w-full p-3 xxl:p-5 rounded-lg text-lg placeholder:tracking-wide " required >
+                                    <option value="" disabled selected>-- Select YES/NO --</option>
+                                    <option class=" text-black" value="YES">YES</option>
+                                    <option class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>
+                        </div>
+                    <% }else{ %>
+                        <!-- Second Row -->
+                        <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                            <!-- Working Institution -->
+                            <div  style="display: none;" class=" mt-4 mb-0 mx-0">
+                                <label for="workingInstitution" class=" text-white text-xl fontcolorblack">WORKING INSTITUTION</label>
+                                <select name="workingInstitution" id="workingInstitution" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide " required>
+                                    <option value="" disabled selected>-- Select --</option>
+                                    <option class=" text-black" value="CHAG">CHAG</option>
+                                    <option class=" text-black" value="QUASI">QUASI</option>
+                                    <option class=" text-black" value="PRIVATE">PRIVATE</option>
+                                    <option class=" text-black" value="GOVERNMENT">GOVERNMENT</option>
+                                </select>
+                            </div>
+                                
+                            <!-- Date on Certificate -->
+                            <div style="display: none;" class=" mt-5 mb- mx-0">
+                                <label for="date-on-cert" class=" text-white text-xl fontcolorblack">DATE ON CERTIFICATE</label>
+                                <input 
+                                type="date" 
+                                id="date-on-cert" 
+                                name="dateoncertificate"
+                                value="<%= data.date_on_certificate %>"
+                                class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Third Row -->
+                        <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                            <!-- Badge Issued -->
+                            <div style="display: none;" class=" mt-4 mb-0 mx-0">
+                                <label for="badge" class=" text-white text-xl fontcolorblack">BADGE ISSUED</label>
+                                <select  name="badgeissued" id="badgeissued" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide " required>
+                                    <option value="" disabled selected>-- Select YES/NO --</option>
+                                    <option class=" text-black" value="YES">YES</option>
+                                    <option class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>
+
+                            <!-- Induction Items Issued -->
+                            <div  style="display: none;" class=" mt-4 mb-0 mx-0">
+                                <label for="induction" class=" text-white text-xl fontcolorblack">INDUCTION ITEMS</label>
+                                <select name="inductionitems" id="inductionitems" class=" w-full p-3 xxl:p-5 rounded-lg text-lg placeholder:tracking-wide " required >
+                                    <option value="" disabled selected>-- Select YES/NO --</option>
+                                    <option class=" text-black" value="YES">YES</option>
+                                    <option class=" text-black" value="NO">NO</option>
+                                </select>
+                            </div>
+                        </div>
+                    <% } %>
+
+                    <!-- Fourth Row -->
+                    <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                    <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN') { %>
+
+                        <!-- Penalty for Collection -->
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="latereg" class=" text-white text-xl fontcolorblack">PENALTY FOR COLLECTION</label>
+                            <select name="penaltyforcollection" id="lateCertificateSelection" class=" w-full p-3 xxl:p-5 rounded-lg text-lg placeholder:tracking-wide " required>
+                                <option value="" disabled selected>-- Select YES/NO --</option>
+                                <option class=" text-black" value="PENALTY FOR CERTIFICATE">YES</option>
+                                <option class=" text-black" value="NO">NO</option>
+                            </select>
+                        </div>
+
+                        <!-- Amount Paid  -->
+                        <div id="late-amount-box" class=" mt-4 mb-5 mx-0">
+                            <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT(PENALTY)</label>
+                            <input 
+                            type="number" 
+                            id="amount-late"
+                            name="amountPaid"
+                            value="<%=data.amount_paid_for_penalty %>" 
+                            placeholder="Enter Amount"
+                            class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                        </div>
+
+                    <% }else{ %>
+
+                        <!-- Penalty for Collection -->
+                        <div class=" mt-4 mb-5 mx-0">
+                            <label for="latereg" class=" text-white text-xl fontcolorblack">PENALTY FOR COLLECTION</label>
+                            <select style="pointer-events: none;" onclick="return false" name="penaltyforcollection" id="lateCertificateSelection"class=" w-full p-3 xxl:p-5 rounded-lg text-lg placeholder:tracking-wide " required>
+                                <option value="" disabled selected>-- Select YES/NO --</option>
+                                <option class=" text-black" value="PENALTY FOR CERTIFICATE">YES</option>
+                                <option class=" text-black" value="NO">NO</option>
+                            </select>
+                        </div>
+
+                        <!-- Amount Paid  -->
+                        <div id="late-amount-box" class=" hidden mt-4 mb-5 mx-0">
+                            <label for="amount" class=" text-white text-xl fontcolorblack">AMOUNT(PENALTY)</label>
+                            <input 
+                            type="number" 
+                            id="amount-late"
+                            name="amountPaid" 
+                            value="<%=data.amount_paid_for_penalty %>" 
+                            placeholder="Enter Amount"
+                            class=" w-full p-3 xl:p-5 text-white rounded-md text-lg placeholder:tracking-wide" required>
+                        </div>
+
+                    <% } %>
+                    </div>
+
+                    <!-- FOR ACCOUNTS OFFICE ONLY -->
+                    <% if(req.user.role !== 'ACCOUNTS' && req.user.role !== 'ADMIN'){ %>
+                        <div style="display: none;" class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                            <!-- BANK SOURCE PENALTY  -->
+                            <div id="bank-box" class=" mt-4 mb-5 mx-0">
+                                <label for="bank-penalty" class=" text-white text-xl fontcolorblack">BANK SOURCE(PENALTY)</label>
+                                <select id="bank-penalty" name="bank" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide " required>
+                                    <option value="" disabled selected>-- Select--</option>
+                                    <option class=" text-black" value="GCB">GCB</option>
+                                    <option class=" text-black" value="ADB">ADB</option>
+                                </select>
+                            </div>
+
+                            <!-- Late Collecion Receipt  -->
+                            <div id="late-receipt-box" class=" mt-4 mb-5 mx-0">
+                                <label for="amount" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER(PENALTY)</label>
+                                <input 
+                                type="number" 
+                                id="late-receipt"
+                                name="receiptNumber"
+                                value="<%=data.receipt_number %>" 
+                                placeholder="Enter Receipt Number"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+
+                            <!-- Late Registration Transacation Reference Number  -->
+                            <div id="transaction-box" class=" mt-4 mb-5 mx-0">
+                                <label for="amount" class=" text-white text-xl fontcolorblack">TRANSACTION NUMBER(PENALTY)</label>
+                                <input 
+                                type="text" 
+                                id="late-transaction-number"
+                                name="transactionRef"
+                                value="<%=data.transaction_reference_number %>" 
+                                placeholder="Enter Transaction Number"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        </div>
+                    <% }else { %>
+                        <div class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                            <!-- BANK SOURCE PENALTY  -->
+                            <div id="bank-box" class=" mt-4 mb-5 mx-0">
+                                <label for="bank-penalty" class=" text-white text-xl fontcolorblack">BANK SOURCE(PENALTY)</label>
+                                <select id="bank-penalty" name="bank" class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide " required>
+                                    <option value="" disabled selected>-- Select--</option>
+                                    <option class=" text-black" value="GCB">GCB</option>
+                                    <option class=" text-black" value="ADB">ADB</option>
+                                </select>
+                            </div>
+
+                            <!-- Late Collecion Receipt  -->
+                            <div id="late-receipt-box" class=" mt-4 mb-5 mx-0">
+                                <label for="amount" class=" text-white text-xl fontcolorblack">RECEIPT NUMBER(PENALTY)</label>
+                                <input 
+                                type="number" 
+                                id="late-receipt"
+                                name="receiptNumber"
+                                value="<%=data.receipt_number %>" 
+                                placeholder="Enter Receipt Number"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+
+                            <!-- Late Registration Transacation Reference Number  -->
+                            <div id="transaction-box" class=" mt-4 mb-5 mx-0">
+                                <label for="amount" class=" text-white text-xl fontcolorblack">TRANSACTION NUMBER(PENALTY)</label>
+                                <input 
+                                type="text" 
+                                id="late-transaction-number"
+                                name="transactionRef"
+                                value="<%=data.transaction_reference_number %>" 
+                                placeholder="Enter Transaction Number"
+                                class=" w-full p-3 xl:p-5 rounded-md text-lg placeholder:tracking-wide" required>
+                            </div>
+                        </div>
+                    <% } %>
+
+                    <!-- Submit Button-->
+                    <button 
+                        type="submit" 
+                        id="next" 
+                        class=" w-full text-white bg-ColorBlack headsubmit hover:bg-HoverColorBlack rounded-lg text-xl cursor-pointer p-3 mt-1">SUBMIT
+                    </button>
+
+                    <script>
+                        document.getElementById('bank-penalty').value ="<%= data.bank %>";
+                        document.getElementById('lateCertificateSelection').value ="<%= data.request_type %>";
+                        document.getElementById('inductionitems').value ="<%= data.induction_items_issued %>";
+                        document.getElementById('badgeissued').value ="<%= data.badge_issued %>";
+                        document.getElementById('workingInstitution').value ="<%= data.working_institution %>";
+
+                    </script>
+                </form>
+
+                <script src="../../scripts/certificate-edit.js"></script>
+                
+            <% }) %>
+
+        </div>   
+
+    <% } %>
+    <script src="../../scripts/allPages.js"></script>
+</body>
+</html>

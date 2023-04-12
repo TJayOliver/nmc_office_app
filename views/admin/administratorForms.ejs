@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <a href="https://www.flaticon.com/free-icons" title="doubt icons"></a>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>REGISTER STAFF</title>
+</head>
+<body class="min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+
+    <!-- Header -->
+<header class=" bg-ColorBlack h-16 shadow-lg top-0 sticky z-50 headercolorwhite overflow-hidden">
+
+    <div class=" flex justify-evenly p-3 mx-auto  ">
+
+        <!-- NMC Logo and Heading  -->
+        <div class=" flex justify-center">
+            <img src="/images/nursing-and-midwifery-council.png" class=" h-12 relative -mt-1">
+            <p id="nmctext" class=" text-fontColorWhiteBlack text-2xl pt-2 fontcolorblack">NMC-BARO</p>
+        </div>
+
+        <!-- Log Out -->
+        <a href="/logout">
+            <div class=" hidden lg:block">
+                <p id="logout" class=" rounded-md bg-white search-logout-color-white p-2 cursor-pointer">LOG OUT</p>
+            </div>
+        </a>
+        
+    </div>
+    
+</header>
+
+    <!-- Forms Section -->
+    <div id="container" class="flex justify-center align-middle mt-4">
+
+        <form action="/register-staff" method="POST" class="mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+            <!-- Heading -->
+            <div class="relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                <div class="flex justify-center align-middle mx-auto space-x-2">
+                    <span><img src="/images/admin/add.png" class="h-10 relative -top-1" /></span>
+                    <h2 class="text-2xl text-white align-middle justify-center">
+                        REGISTER NEW STAFF
+                    </h2>
+                </div>
+            </div>
+
+            <!-- First Row -->
+            <div class=" flex flex-col lg:flex mt-5 ">
+
+                <!-- First Name -->
+                <div class="  mt-5 mb-2 mx-0 relative">
+                    <label for="staff-fname" class="text-white text-xl fontcolorblack">NAME</label>
+                    <input 
+                    type="text" 
+                    id="staff-fname" 
+                    name="name" 
+                    placeholder="Enter Full Name"
+                    class="w-full border-white text-lg rounded-lg placeholder:tracking-wide p-3 xl:p-5 text-white"
+                    required>
+                </div>
+
+            </div>
+
+            <!-- Second Row -->
+            <div class="flex flex-col lg:flex">
+                <div class="flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8">
+                    <!-- Staff UserName -->
+                    <div class="mt-4 mb-5 mx-0 relative">
+                        <label for="staffusername" class="text-white text-xl fontcolorblack">USERNAME</label>
+                        <input type="text" id="staffusername" placeholder="Enter Preferred Username" name="username"
+                            class="w-full border-white text-lg rounded-lg placeholder:tracking-wide p-3 xl:p-5 text-white"
+                            required />
+                    </div>
+
+                    <!-- Role -->
+                    <div class="mt-4 mb-5 mx-0 relative">
+                        <label for="role" class="text-white text-xl fontcolorblack">ROLE</label>
+                        <select id="role" name="role"
+                            class="w-full p-3 rounded-lg text-lg placeholder:tracking-wide" required>
+                            <option value="" disabled selected>
+                                -- Select Account Type --
+                            </option>
+                            <option class="text-black" value="CLIENT SERVICE">
+                                CLIENT SERVICE
+                            </option>
+                            <option class="text-black" value="ADMIN">ADMIN</option>
+                            <option class="text-black" value="ACCOUNTS">
+                                ACCOUNTS OFFICE
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8">
+                    <!-- Password -->
+                    <div class="mt-2 mb-3 mx-0 relative">
+                        <label for="staffpassword" class="text-white text-xl fontcolorblack">PASSWORD</label>
+                        <input type="password" id="staffpassword" name="password"
+                            placeholder="Enter Staff Password "
+                            class="w-full border-white text-lg rounded-lg placeholder:tracking-wide p-3 xl:p-5 text-white"
+                            required />
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mt-2 mb-3 mx-0 relative">
+                        <label for="confirmstaffpassword" class="text-white text-xl fontcolorblack">CONFIRM
+                            PASSWORD</label>
+                        <input type="password" id="confirmstaffpassword" name="confirmpassword"
+                            placeholder="Confirm Staff Password "
+                            class="w-full border-white text-lg rounded-lg placeholder:tracking-wide p-3 xl:p-5 text-white"
+                            required />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit"
+                class="w-full text-white bg-ColorBlack headsubmit rounded-lg text-xl hover:bg-HoverColorBlack cursor-pointer p-3 mt-4">
+                REGISTER
+            </button>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

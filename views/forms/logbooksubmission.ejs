@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+<head>
+    <%- include("../layout/head") %>
+</head>
+<body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+    <%- include("../layout/header-smallscreen") %>
+
+    <% if(action == 'ADD'){ %> 
+
+        <%- include("../layout/formErrorMsg") %>
+
+        <!-- Forms Section -->
+        <div class=" flex justify-center align-middle mt-5">
+            <form action="/logbook-submission" method="post" class=" mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                <!-- Heading -->
+                <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                    <div class=" flex justify-center align-middle mx-auto space-x-2">
+                        <span><img src="/images/main/logbook.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                        <h2 class=" text-2xl  text-white align-middle justify-center">LOGBOOK SUBMISSION FORM</h2>
+                    </div>
+                </div>
+
+                <!-- First Row -->
+                <div class=" flex flex-col lg:flex mt-2 xl:mt-8">
+                    <!-- Registration Number -->
+                    <div class="  mt-5 mb-5 mx-0 relative">
+                        <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                        <input 
+                        type="text" 
+                        id="registration#" 
+                        name="registrationNumber"
+                        placeholder="Enter Registration Number"
+                        class="  w-full border-white text-lg rounded-lg  placeholder:tracking-wide p-3 xl:p-5" required>
+                    </div>
+                        
+                    <!-- Facility  -->
+                    <div class=" flex flex-col lg:flex ">
+                        <label for="facility" class=" text-white text-xl fontcolorblack">ROTATION FACILITY</label>
+                        <input 
+                        type="text" 
+                        id="facility"
+                        name="facilityname" 
+                        placeholder="Enter Facility Name" 
+                        class="  w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                    </div>
+                </div>  
+                
+                <!-- Second Row -->
+                <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                    
+                    <!-- Date of Commencement of School  -->
+                    <div class=" mt-5 mb-5 mx-0 relative">
+                        <label for="commencement" class=" text-white text-xl fontcolorblack">DATE OF COMMENCEMENT OF SCHOOL</label>
+                        <input 
+                        type="date" 
+                        id="commencement"
+                        name="commencementofschool" 
+                        class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                    </div>
+
+                    <!-- Date of Completion -->
+                    <div class=" mt-5 mb-5 mx-0 relative">
+                        <label for="completion" class=" text-white text-xl fontcolorblack">DATE OF COMPLETION OF SCHOOL</label>
+                        <input 
+                        type="date" 
+                        id="completion" 
+                        name="completionofschool"
+                        class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    id="next" 
+                    class=" w-full text-white bg-ColorBlack headsubmit hover:bg-HoverColorBlack rounded-lg text-xl cursor-pointer p-3 mt-5">SUBMIT
+                </button>
+            </form>
+        </div>
+
+    <% } else if(action == 'EDIT'){ %>
+
+        <%- include("../layout/formErrorMsg") %>
+
+        <!-- Edit Forms Section -->
+        <div class=" flex justify-center align-middle mt-5">
+
+            <% data.forEach(data =>{ %>
+
+                <form action="/logbook-submission/edit/<%= data.id %>" method="post" class=" mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                    <!-- Heading -->
+                    <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                        <div class=" flex justify-center align-middle mx-auto space-x-2">
+                            <span><img src="/images/main/logbook.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                            <h2 class=" text-2xl  text-white align-middle justify-center">LOGBOOK SUBMISSION FORM</h2>
+                        </div>
+                    </div>
+
+                    <!-- First Row -->
+                    <div class=" flex flex-col lg:flex mt-2 xl:mt-8">
+                        <!-- Registration Number -->
+                        <div class="  mt-5 mb-5 mx-0 relative">
+                            <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                            <input 
+                            type="text" 
+                            id="registration#" 
+                            name="registrationNumber"
+                            value="<%= data.registration_number %>"
+                            placeholder="Enter Registration Number"
+                            class="  w-full border-white text-lg rounded-lg  placeholder:tracking-wide p-3 xl:p-5" required>
+                        </div>
+                            
+                        <!-- Facility  -->
+                        <div class=" flex flex-col lg:flex ">
+                            <label for="facility" class=" text-white text-xl fontcolorblack">ROTATION FACILITY</label>
+                            <input 
+                            type="text" 
+                            id="facility"
+                            name="facilityname"
+                            value="<%= data.facility %>" 
+                            placeholder="Enter Facility Name" 
+                            class="  w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                        </div>
+                    </div>  
+                    
+                    <!-- Second Row -->
+                    <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                        
+                        <!-- Date of Commencement of School  -->
+                        <div class=" mt-5 mb-5 mx-0 relative">
+                            <label for="commencement" class=" text-white text-xl fontcolorblack">DATE OF COMMENCEMENT OF SCHOOL</label>
+                            <input 
+                            type="date" 
+                            id="commencement"
+                            name="commencementofschool" 
+                            value="<%= data.date_of_commencement_of_school %>"
+                            class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                        </div>
+
+                        <!-- Date of Completion -->
+                        <div class=" mt-5 mb-5 mx-0 relative">
+                            <label for="completion" class=" text-white text-xl fontcolorblack">DATE OF COMPLETION OF SCHOOL</label>
+                            <input 
+                            type="date" 
+                            id="completion"
+                            value="<%= data.date_of_completion %>" 
+                            name="completionofschool"
+                            class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        id="next" 
+                        class=" w-full text-white bg-ColorBlack headsubmit hover:bg-HoverColorBlack  rounded-lg text-xl cursor-pointer p-3 mt-5">SUBMIT
+                    </button>
+                </form>
+
+            <% }) %>
+            
+        </div>
+
+    <% } %>
+
+    <script src="../../scripts/allPages.js"></script>
+</body>
+</html>

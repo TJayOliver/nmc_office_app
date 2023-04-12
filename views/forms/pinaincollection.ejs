@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+<head>
+    <%- include("../layout/head") %>
+</head>
+<body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+    <%- include("../layout/header-smallscreen") %>
+
+    <% if(action == 'ADD'){ %>
+
+        <%- include("../layout/formErrorMsg") %>
+
+        <!-- Forms Section -->
+        <div id="container" class=" flex justify-center align-middle mt-5">
+            <form action="/pin-ain-collection" method="post" class=" mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                <!-- Heading -->
+                <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                    <div class=" flex justify-center align-middle mx-auto space-x-2">
+                        <span><img src="/images/main/pinain.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                        <h2 class=" text-2xl text-white align-middle justify-center">PIN/AIN COLLECTION FORM</h2>
+                    </div>
+                </div>
+
+                <!-- First Row -->
+                <div class=" flex flex-col lg:flex mt-5 ">
+                    <!-- Registration Number -->
+                    <div class=" mt-5 mb-5 mx-0 relative">
+                        <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                        <input 
+                        type="text" 
+                        id="registration#" 
+                        name="registrationNumber"
+                        placeholder="Enter Registration Number"
+                        class="  w-full border-white text-lg rounded-lg  placeholder:tracking-wide p-3 xl:p-5 text-white fontcolorblack" required>
+                    </div>
+                </div>  
+                
+                <!-- Second Row -->
+                <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                    <!--  Pin/Ain Collection Type -->
+                    <div class=" mt-3 mb-5 mx-0 relative">
+                        <label for="renewal" class=" text-white text-xl fontcolorblack">COLLECTION TYPE</label>
+                        <select name="collectionType" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                            <option value="" disabled selected>-- Select Type --</option>
+                            <option class=" text-black" value="NEW PIN">NEW PIN</option>
+                            <option class=" text-black" value="NEW AIN">NEW AIN</option>
+                            <option  class=" text-black" value="RENEWAL">RENEWAL</option>
+                            <option class="text-black" value="REPLACEMENT">REPLACEMENT</option>
+                            <option class=" text-black" value="CHANGE OF CARD">CHANGE OF CARD</option>
+                        </select>
+                    </div>
+
+                    <!--  Pin/Ain Collected By -->
+                    <div class=" mt-3 mb-5 mx-0 relative">
+                        <label for="collected" class=" text-white text-xl fontcolorblack">PIN/AIN COLLECTED BY</label>
+                        <select id="collected" name="CollectedBy" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                            <option value="" disabled selected>-- Select Self / On Behalf</option>
+                            <option class=" text-black" value="SELF">SELF</option>
+                            <option class=" text-black" value="ON BEHALF">ON BEHALF</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Third Row -->
+                <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                    <!-- Taken By Name -->
+                    <div class="  mt-4 mb-2 mx-0 relative">
+                        <label for="takenby" id="lab1" class=" hidden text-white text-xl fontcolorblack">TAKEN BY</label>
+                        <input 
+                        type="text" 
+                        id="takenby"
+                        name="takenby" 
+                        placeholder="Enter Receiver's Name"
+                        class="  hidden w-full text-white  text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class=" mt-4 mb-2 mx-0 relative">
+                        <label for="takenphone" id="lab2" class=" hidden text-white text-xl fontcolorblack">PHONE NUMBER</label>
+                        <input 
+                        type="tel" 
+                        id="takenphone"
+                        name="takenphone" 
+                        placeholder="Enter Receiver's Phone Number"
+                        class="  hidden w-full text-white  text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                    </div>
+
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    id="next" 
+                    class=" w-full text-white bg-ColorBlack headsubmit rounded-lg text-xl hover:bg-HoverColorBlack cursor-pointer p-3 mt-4">SUBMIT
+                </button>
+            </form>
+        </div>
+
+    <% } else if(action == 'EDIT'){ %>
+
+        <%- include("../layout/formErrorMsg") %> 
+
+        <!-- Edit Forms Section -->
+        <div id="container" class=" flex justify-center align-middle mt-5">
+
+            <% data.forEach(data =>{ %>
+
+                <form action="/pin-ain-collection/edit/<%= data.id %>" method="post" class=" mt-2 w-full max-w-3xl p-2 lg:max-w-3xl xxl:max-w-5xl">
+
+                    <!-- Heading -->
+                    <div class=" relative flex bg-ColorBlack headsubmit p-8 rounded-md">
+                        <div class=" flex justify-center align-middle mx-auto space-x-2">
+                            <span><img src="/images/main/pinain.png" class=" hidden md:flex h-10 relative -top-1"></span>
+                            <h2 class=" text-2xl  text-white align-middle justify-center">EDIT PIN/AIN COLLECTION FORM</h2>
+                        </div>
+                    </div>
+
+                    <!-- First Row -->
+                    <div class=" flex flex-col lg:flex mt-5 ">
+                        <!-- Registration Number -->
+                        <div class=" mt-5 mb-5 mx-0 relative">
+                            <label for="registration#" class=" text-white text-xl fontcolorblack">REGISTRATION NUMBER</label>
+                            <input 
+                            type="text" 
+                            id="registration#" 
+                            name="registrationNumber"
+                            value="<%= data.registration_number %>"
+                            placeholder="Enter Registration Number"
+                            class="  w-full border-white text-lg rounded-lg  placeholder:tracking-wide p-3 xl:p-5 text-white fontcolorblack" required>
+                        </div>
+                    </div>  
+                    
+                    <!-- Second Row -->
+                    <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+                        <!--  Pin/Ain Collection Type -->
+                        <div class=" mt-3 mb-5 mx-0 relative">
+                            <label for="renewal" class=" text-white text-xl fontcolorblack">COLLECTION TYPE</label>
+                            <select name="collectionType" id="collectiontype" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                                <option value="" disabled selected>-- Select Type --</option>
+                                <option class=" text-black" value="NEW PIN">NEW PIN</option>
+                                <option class=" text-black" value="NEW AIN">NEW AIN</option>
+                                <option  class=" text-black" value="RENEWAL">RENEWAL</option>
+                                <option class="text-black" value="REPLACEMENT">REPLACEMENT</option>
+                                <option class=" text-black" value="CHANGE OF CARD">CHANGE OF CARD</option>
+                            </select>
+                        </div>
+
+                        <!--  Pin/Ain Collected By -->
+                        <div class=" mt-3 mb-5 mx-0 relative">
+                            <label for="collected" class=" text-white text-xl fontcolorblack">PIN/AIN COLLECTED BY</label>
+                            <select id="collected" name="CollectedBy" class=" w-full p-3 xl:p-5 rounded-lg text-lg placeholder:tracking-wide" required>
+                                <option value="" disabled selected>-- Select Self / On Behalf</option>
+                                <option class=" text-black" value="SELF">SELF</option>
+                                <option class=" text-black" value="ON BEHALF">ON BEHALF</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Third Row -->
+                    <div  class=" flex flex-col lg:flex lg:flex-row lg:gap-10 mt-2 xl:mt-8 ">
+
+                        <!-- Taken By Name -->
+                        <div class="  mt-4 mb-2 mx-0 relative">
+                            <label for="takenby" id="lab1" class=" text-white text-xl fontcolorblack">TAKEN BY</label>
+                            <input 
+                            type="text" 
+                            id="takenby"
+                            name="takenby" 
+                            value="<%= data.taken_by %>"
+                            placeholder="Enter Receiver's Name"
+                            class="  w-full text-white  text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class=" mt-4 mb-2 mx-0 relative">
+                            <label for="takenphone" id="lab2" class=" text-white text-xl fontcolorblack">PHONE NUMBER</label>
+                            <input 
+                            type="tel" 
+                            id="takenphone"
+                            name="takenphone"
+                            value="<%= data.taken_phone %>"
+                            placeholder="Enter Receiver's Phone Number"
+                            class=" w-full text-white  text-lg rounded-md placeholder:tracking-wide p-3 xl:p-5" required>
+                        </div>
+
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        id="next" 
+                        class=" w-full text-white bg-ColorBlack rounded-lg text-xl hover:bg-HoverColorBlack headsubmit cursor-pointer p-3 mt-4">SUBMIT
+                    </button>
+
+                    <script>
+                        document.getElementById('collectiontype').value = "<%= data.collection_type %>";
+                        document.getElementById('collected').value = "<%= data.collected_by %>";
+                    </script>
+                </form>
+
+            <% }) %>
+            
+        </div>
+    <% } %>
+    
+    <script src="../../scripts/allPages.js"></script>
+    <script src="../../scripts/pincollection.js"></script>
+</body>
+</html>

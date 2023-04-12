@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth">
+<head>
+    <%- include("layout/head") %>
+</head>
+<body class=" min-h-screen p-0 m-0 select-none w-full bg-backgroundColorBlack overflow-x-hidden transition duration-500 ease-in">
+    <%- include("layout/header-smallscreen") %>
+
+    <!-- Request Selection Box -->
+    <section class=" mt-10 lg:mt-24 flex relative">
+
+    <div class=" m-auto relative">
+    
+        <!-- Previous and Next Buttons -->
+        <div class=" relative">
+            <!-- Next Button -->
+            <div id="nextslide" class=" h-9 w-9 top-16 mt-2 lg:h-16 lg:w-16 bg-ColorBlack cursor-pointer rounded-full lg:absolute fixed right-3 md:right-4 lg:-right-24 lg:top-40 z-10 hover:bg-HoverColorBlack">
+                <div class=" text-5xl text-white text-center relative -top-2.5 lg:top-1">&#8250</div>
+            </div>
+            <!-- Previous Button -->
+            <div id="prevslide" class="  h-9 w-9 top-16 mt-2  lg:h-16 lg:w-16  bg-ColorBlack cursor-pointer rounded-full left-4 lg:absolute fixed lg:-left-24 lg:top-40 z-10 hover:bg-HoverColorBlack">
+                <div class=" text-5xl text-white text-center relative -top-2.5 lg:top-1">&#8249</div>
+            </div>
+        </div>
+    
+        <!-- First Menu -->
+        <div class=" slide active left-to-right">
+            <div class=" grid grid-cols-1 gap-x-14 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xxl:grid xxl:grid-cols-4 xxl:gap-x-14 xxl:gap-y-24">
+                <!-- Registration -->
+                <a href="/records/registration">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/registration.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/registration-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REGISTRATION</p>
+                        </div>
+                    </div>
+                </a>
+    
+                <!-- PIN/AIN Renewal -->
+                <a href="/records/pin-ain-renewal">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/renewal.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/renewal-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">PIN/AIN RENEWAL</p>
+                        </div>
+                    </div>
+                </a>
+    
+                <!-- Certificate Collection -->
+                <a href="/records/certificate-collection">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/certificate.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/certificate-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">CERTIFICATE COLLECTION</p>
+                        </div>
+                    </div>
+                </a>
+    
+                <!-- Amendment of Records -->
+                <a href="/records/amendment-of-records">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:-translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/amendment.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/amendment-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">AMENDMENT OF RECORDS</p>
+                        </div>
+                    </div>
+                </a>
+    
+                <!-- Replacement of PIN/AIN -->
+                <a href="/records/replacement-of-pin-ain">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:-translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/replacement.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/replacement-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REPLACEMENT OF PIN/AIN</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Duplicate Receipt -->
+                <a href="/records/duplicate-receipt">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/receipt.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/receipt-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">DUPLICATE RECEIPT</p>
+                        </div>
+                    </div>
+                </a>
+    
+                <!-- Request for Results Slip -->
+                <a href="/records/request-for-results-slip">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/resultsslip.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/resultsslip-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REQUEST FOR RESULTS SLIP</p>
+                        </div>
+                    </div>
+                </a>
+    
+                <!-- Request for Certificate -->
+                <a href="/records/request-for-certificate">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/requestforcertificate.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/requestforcertificate.PNG" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REQUEST FOR CERTIFICATE</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    
+        <!-- Second Menu -->
+        <div class="  slide right-to-left">
+            <div class=" grid grid-cols-1 gap-x-14 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xxl:grid xxl:grid-cols-4 xxl:gap-x-14 xxl:gap-y-24">
+    
+                <!-- Re-Engagement -->
+                <a href="/records/re-engagement">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/reengagement.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/reengagement.PNG" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">RE-ENGAGEMENT</p>
+                        </div>
+                    </div>
+                </a>
+    
+                <!-- Request for Logbook -->
+                <a href="/records/request-for-logbook">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/requestforlogbook.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/requestforlogbook-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">REQUEST FOR LOGBOOK</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Request for Verification -->
+                <a href="/records/verification">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/verification.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/verification-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">VERIFICATION</p>
+                        </div>
+                    </div>
+                </a>
+    
+                <!-- Examiners Pack -->
+                <a href="/records/examiners-pack">
+                    <div class=" mainbox h-48 w-52 rounded-lg xxl:h-48 xxl:w-80 bg-transparent border hover:translate-y-4 transition duration-150 ease-out hover:bg-yellow-300 hover:border-black text-white relative cursor-pointer">
+                        <div class=" relative flex justify-center mt-10">
+                            <img src="/images/main/examiners.png" class=" h-[62px] absolute whitemenuicon">
+                            <img src="/images/blackicons/examiners-black.png" class=" h-[62px] blackmenuicon opacity-0">
+                        </div>
+                        <div>
+                            <p class=" flex justify-center text-center mt-1 xxl:text-xl fontcolorblack">EXAMINERS PACK</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    </section> 
+
+    <script src="/scripts/allPages.js"></script>
+    <script src="/scripts/homepage.js"></script>
+</body>
+</html>

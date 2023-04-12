@@ -1,0 +1,124 @@
+<!-- Header -->
+<header class=" bg-ColorBlack h-16 shadow-lg top-0 sticky z-50 headercolorwhite overflow-hidden">
+    <div class=" flex justify-between p-3 mx-auto  ">
+
+        <!-- NMC Logo and Heading  -->
+        <div class=" flex justify-center">
+            <img src="/images/nursing-and-midwifery-council.png" class=" h-9 mt-1 relative ">
+            <p id="nmctext" class=" text-fontColorWhiteBlack text-2xl pt-2 fontcolorblack">NMC-BARO</p>
+        </div>
+
+
+        <div class=" flex gap-6">
+
+        <!-- Dark & Light Mode Toggle -->
+        <div class=" hidden lg:flex cursor-pointer">
+            <div class=" relative mt-2">
+                <img id="whiteicon" src="/images/lightmode.png" class=" h-6 theme absolute">
+                <img src="/images/lightmode-black.png" class=" h-6 theme">
+            </div>
+        </div>
+
+        <!-- Home -->
+        <% if(req.user.role == 'ADMIN'){ %>
+            <a href="/admin-homepage">
+                <div id="home" class=" hidden lg:flex cursor-pointer gap-1">
+                    <div class=" text-white fontcolorblack text-md pt-2 hover:text-red-600">HOME</div>
+                </div>
+            </a>
+        <% } %>
+
+        <% if(req.user.role == 'ACCOUNTS') { %>
+            <a href="/accountoffice-homepage">
+                <div id="home" class=" hidden lg:flex cursor-pointer gap-1">
+                    <div class=" text-white fontcolorblack text-md pt-2 hover:text-red-600">HOME</div>
+                </div>
+            </a>
+        <% } %>
+
+        <% if(req.user.role == 'CLIENT SERVICE') { %>
+            <a href="/clientservice-homepage">
+                <div id="home" class=" hidden lg:flex cursor-pointer gap-1">
+                    <div class=" text-white fontcolorblack text-md pt-2 hover:text-red-600">HOME</div>
+                </div>
+            </a>
+        <% } %>
+
+        <!-- Add New Client -->
+        <% if(req.user.role == 'CLIENT SERVICE' || req.user.role == 'ADMIN') { %>
+            <a href="/client-details">
+                <div id="home" class=" hidden lg:flex cursor-pointer">
+                    <div class=" text-white fontcolorblack text-md pt-2 hover:text-red-600">ADD NEW CLIENT</div>
+                </div>
+            </a>
+        <% } %>
+
+        <!-- Repots-->
+        <a href="/generate-report">
+            <div id="home" class=" hidden lg:flex cursor-pointer">
+                <div class=" text-white fontcolorblack text-md pt-2 hover:text-red-600">REPORTS</div>
+            </div>
+        </a>
+
+        <!-- User Name -->
+        <div class=" hidden justify-center lg:flex ">
+            <p id="reportstext" class=" text-fontColorWhiteBlack text-md pt-2 fontcolorblack"><%= staffName %> !</p>
+        </div>
+
+        </div>
+
+        <!-- Log Out -->
+        <a href="/logout">
+            <div class=" hidden lg:block">
+                <p id="logout" class=" rounded-md bg-white search-logout-color-white p-2 cursor-pointer">LOG OUT</p>
+            </div>
+        </a>
+        
+        <!-- Small Screens Menu -->
+        <div class=" relative  cursor-pointer lg:hidden">
+            <span class=" text-backgroundColorWhite text-4xl absolute hamburger fontcolorblack" id="hamburger">&#9776</span>
+            <span class=" text-backgroundColorWhite text-6xl invisible relative -top-4 right-1 times fontcolorblack" id="times">&times</span>
+        </div>
+    </div>
+</header>
+
+<!-- Small Screens Items -->
+<section id="mobile" class=" z-40 fixed bg-ColorBlack min-h-screen w-full p-2 space-y-4 text-white uppercase text-3xl lg:hidden">
+
+    <!-- User Name -->
+    <div class=" flex hover:translate-y-2 hover:transition hover:duration-75 hover:ease-in mb-4"><%= staffName %></div>
+    
+    <!-- Home -->
+    <% if(req.user.role == 'ADMIN'){ %>
+        <a href="/admin-homepage">
+            <div  class=" flex hover:translate-y-2 hover:transition hover:duration-75 hover:ease-in">HOME</div>
+        </a>
+    <% } %>
+
+    <% if(req.user.role == 'ACCOUNTS') { %>
+        <a href="/accountoffice-homepage">
+            <div  class=" flex hover:translate-y-2 hover:transition hover:duration-75 hover:ease-in">HOME</div>
+        </a>
+    <% } %>
+
+    <% if(req.user.role == 'CLIENT SERVICE') { %>
+        <a href="/clientservice-homepage">
+            <div  class=" flex hover:translate-y-2 hover:transition hover:duration-75 hover:ease-in">HOME</div>
+        </a>
+    <% } %>
+    
+    <!-- Dark/Light Mode -->
+    <div id="lightmode" class=" flex hover:translate-y-2 hover:transition hover:duration-75 hover:ease-in cursor-pointer">
+        <div id="theme-text">Light Theme</div>
+    </div>
+
+    <!-- REPORTS -->
+    <div class=" flex hover:translate-y-2 hover:transition hover:duration-75 hover:ease-in">
+        <a href="">Reports</a>
+    </div>
+
+    <!-- Log Out -->
+    <div class=" flex hover:translate-y-2 hover:transition hover:duration-75 hover:ease-in">
+        <a href="/logout">Log Out</a>
+    </div>
+</section>
