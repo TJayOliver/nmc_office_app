@@ -5,7 +5,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": " nodemon app.js",
+    "start": "app.js",
     "dev": "concurrently \"nodemon app.js\" \"postcss public/styles/tailwind.css -o public/styles/styles.css --watch\""
   },
   "author": "T-Jay Oliver",
